@@ -1,8 +1,9 @@
 import React from 'react'
+import Navbar from '../Component/Navbar'
 
 function Payment() {
   return (
-    <div>Payment</div>
+    <div> <Navbar />Payment</div>
   )
 }
 

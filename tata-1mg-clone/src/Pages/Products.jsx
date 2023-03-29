@@ -1,8 +1,9 @@
 import React from 'react'
+import Navbar from '../Component/Navbar'
 
 function Products() {
   return (
-    <div>Products</div>
+    <div> <Navbar />Products</div>
   )
 }
 

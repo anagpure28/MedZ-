@@ -1,8 +1,9 @@
 import React from 'react'
+import Navbar from '../Component/Navbar'
 
 function Signup() {
   return (
-    <div>Signup</div>
+    <div><Navbar />Signup</div>
   )
 }
 
