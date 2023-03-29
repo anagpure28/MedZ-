@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../Component/Navbar'
 import { Box, Heading, Text, Button } from '@chakra-ui/react';
+import Footer from './Footer'
 
 function PageNotfound() {
   return (
@@ -31,6 +32,7 @@ function PageNotfound() {
         Go to Home
       </Button>
     </Box>
+    <Footer />
       </div>
   )
 }

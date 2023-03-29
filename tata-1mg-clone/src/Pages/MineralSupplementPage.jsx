@@ -8,10 +8,8 @@ import { MineralSupplementSidebar } from '../components/MineralSupplementSidebar
 export const MineralSupplementPage = () => {
   return (
     <DIV>
-      <div className='sidebar'><MineralSupplementSidebar></MineralSupplementSidebar></div>
-      
-      <div className='productlist'><MineralSupplementProductList></MineralSupplementProductList></div>
-      
+      <div className='sidebar'><MineralSupplementSidebar></MineralSupplementSidebar></div>    
+      <div className='productlist'><MineralSupplementProductList></MineralSupplementProductList></div>      
     </DIV>
   )
 }

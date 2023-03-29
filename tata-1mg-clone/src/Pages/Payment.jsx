@@ -1,9 +1,10 @@
 import React from 'react'
 import Navbar from '../Component/Navbar'
+import Footer from './Footer'
 
 function Payment() {
   return (
-    <div> <Navbar />Payment</div>
+    <div> <Navbar />Payment <Footer /></div>
   )
 }
 

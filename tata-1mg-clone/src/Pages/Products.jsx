@@ -1,9 +1,9 @@
 import React from 'react'
 import Navbar from '../Component/Navbar'
-
+import Footer from './Footer'
 function Products() {
   return (
-    <div> <Navbar />Products</div>
+    <div> <Navbar />Products <Footer /></div>
   )
 }
 
