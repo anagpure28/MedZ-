@@ -1,6 +1,5 @@
 import React from 'react'
 import { Routes,Route } from 'react-router-dom'
-import Admin from '../Admin/Admin'
 import Privateroute from '../Privateroute/Privateroute'
 import AyurvedaProducts from './AyurvedaProducts'
 import Diabetes from './Diabetes'
@@ -18,21 +17,22 @@ import PersonalCare from './PersonalCare'
 import Products from './Products'
 import SignleProduct from './SignleProduct'
 import VitaminNutrition from './VitaminNutrition'
-// import Signup from './Signup'
+import AdminLogin from '../Admin/Pages/AdminLogin'
+import { Signup } from './Signup'
 
 function AllRoutes() {
   return (
     <Routes>
         <Route path="/" element={<Homepage />}/>
-        {/* <Route path="/signup" element={<Signup />}/> */}
+        <Route path="/signup" element={<Signup />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/payment" element={<Payment />}/>
         <Route path="/products" element={<Products />}/>
         <Route path="/products/:id" element={<SignleProduct />}/>
         <Route path="*" element={<PageNotfound />}/>
-        <Route path='/admin' element={<Admin />}/>
-        {/* Product Page url */}
-        <Route path='/health-resource' element={<Privateroute><HealthResource/></Privateroute>}/>
+        <Route path='/admin' element={<AdminLogin />}/>
+        {/*  */}
+         <Route path='/health-resource' element={<HealthResource/>}/>
         <Route path='/vitamin-nutritiion' element={<VitaminNutrition/>}/>
         <Route path='/diabetes' element={<Diabetes/>}/>
         <Route path='/health-device' element={<HealthcareDevice/>}/>
