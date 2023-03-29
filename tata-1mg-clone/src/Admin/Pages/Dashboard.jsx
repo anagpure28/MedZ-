@@ -1,9 +1,12 @@
 import React from 'react'
+import SidebarWithHeader from '../Components/Admin';
 
 function Dashboard() {
   console.log("hy")
   return (
-    <div>Dashboard</div>
+    <div>
+      <SidebarWithHeader/>
+    </div>
   )
 }
 
