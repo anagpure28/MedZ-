@@ -20,13 +20,15 @@ import { useState } from 'react';
 import gmail from '../images/gmail.png'
 import instagram from '../images/instagram.png'
 import linkdin from '../images/linkedin.png'
+import mypic from '../images/mypic.png'
+
 import { useNavigate } from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux'
 import { AdminAuthSuccess } from '../../Redux/AdminAuth/action';
 const avatars = [
   {
     name: 'Ryan Florence',
-    url: 'https://bit.ly/ryan-florence',
+    url: mypic,
   },
   {
     name: 'Segun Adebayo',
@@ -67,7 +69,7 @@ export default function JoinOurTeam() {
     <Box position={'relative'}>
       <Container
         as={SimpleGrid}
-        maxW={'7xl'}
+        maxW={'5xl'}
         columns={{ base: 1, md: 2 }}
         spacing={{ base: 10, lg: 32 }}
         py={{ base: 10, sm: 20, lg: 32 }}>
@@ -238,9 +240,9 @@ export default function JoinOurTeam() {
          
           </Box>
           <Box display={"flex"} m={"auto"} justifyContent={"space-evenly"}>
-            <Img width={"65px"} src={gmail} alt="" />
-            <Img width={"65px"} src={linkdin} alt="" />
-            <Img width={"65px"} src={instagram} alt="" />
+            <Img width={"45px"} src={gmail} alt="" />
+            <Img width={"45px"} src={linkdin} alt="" />
+            <Img width={"45px"} src={instagram} alt="" />
           </Box>
 
           <Box display={"flex"} m={"auto"} justifyContent={"space-between"}>
