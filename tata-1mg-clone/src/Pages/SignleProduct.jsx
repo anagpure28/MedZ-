@@ -1,8 +1,9 @@
 import React from 'react'
+import Navbar from '../Component/Navbar'
 
 function SignleProduct() {
   return (
-    <div>SignleProduct</div>
+    <div><Navbar />SignleProduct</div>
   )
 }
 
