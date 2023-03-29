@@ -1,0 +1,64 @@
+.prodBox {
+    height: 300px;
+    width:249px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 12px;
+    gap: 5px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 0px 7px 0px;
+}
+
+.prodBox>img {
+    margin: auto;
+    cursor: pointer;
+}
+
+.prodName {
+    font-size: 16px;
+    line-height: 20px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.ratingDiv {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    line-height: 17px;
+}
+
+.ratingDiv>div {
+    background-color: #1AAB2A;
+    color: white;
+    padding: 3px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.ratingDiv>p {
+    color: #757575;
+}
+
+#discount {
+    color: #1AAB2A;
+    font-weight: bold;
+}
+
+.priceDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.priceDiv>button {
+    border: none;
+    background-color: white;
+    color: #FF6F61;
+    font-weight: bold;
+    cursor: pointer;
+}
