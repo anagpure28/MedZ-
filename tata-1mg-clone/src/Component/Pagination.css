@@ -1,0 +1,11 @@
+button{
+    border-radius: 20px;
+    color: #FF6f61;
+    padding:2px !important;
+}
+
+@media screen and (max-width:620px) {
+    .pagination-main{
+        width:80% !important;
+    }
+}
