@@ -30,7 +30,7 @@ function ProductCard({title,rating,price,discountprice,images}) {
            <div className={prodstyles.priceDiv}>
              <p>₹{discountprice}</p>
              <button>
-               ADD
+               View
              </button>
            </div>
          </div>    

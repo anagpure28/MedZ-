@@ -1,83 +1,83 @@
 .mainDiv{
-  border: 1px solid #eee;
-  border-radius: 5px;
-  height: 175px;
-  width: 265px;
-  background-color: #ffffff;
-  box-sizing: border-box;
-  text-align: left;
-  padding: 10px;
-}
-
-.mainDiv:hover{
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-}
-
-h4{
-    font-size: 14px;
-    font-weight: bold;
-    color: #212121;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-p{
-    font-size: 13px;
-    margin-top: 6px;
-    color: #757575;
-}
-
-.ratingDiv{
-    display:flex;
-    align-items:center;
-    gap: 10px;
-    margin: 10px 0px;
-}
-
-.ratingDiv>img{
-    width:33%;
-    height:55px;
     border: 1px solid #eee;
-}
-
-.ratingBox{
-    width: 36px;
-    height: 18px;
-    color: #ffffff;
-    background-color: #1aaa2a;
-    font-size: 12px;
-    padding:1px;
-}
-
-.iso{
-    font-size: 12px;
-    color: #212121
-}
-
-.priceDiv{
-    display:flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.discountprice{
-    font-size: 16px;
-    font-weight: bold;
-    color: #212121 
-}
-
-.price{
-    color: #757575;
-    font-size: 12px;
-    text-decoration: line-through;
-}
-
-.discount {
-    border: 1px dashed #1aab2a;
-    color: #1aaa2a;
-    padding: 3px;
-    background-color: #f3fbf4;
-    font-size: 12px;
-    font-weight: 100;
+    border-radius: 5px;
+    height: 175px;
+    width: 265px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    text-align: left;
+    padding: 10px;
   }
+  
+  .mainDiv:hover{
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  }
+  
+  h4{
+      font-size: 14px;
+      font-weight: bold;
+      color: #212121;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+  }
+  
+  p{
+      font-size: 13px;
+      margin-top: 6px;
+      color: #757575;
+  }
+  
+  .ratingDiv{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      margin: 10px 0px;
+  }
+  
+  .ratingDiv>img{
+      width:33%;
+      height:55px;
+      border: 1px solid #eee;
+  }
+  
+  .ratingBox{
+      width: 36px;
+      height: 18px;
+      color: #ffffff;
+      background-color: #1aaa2a;
+      font-size: 12px;
+      padding:1px;
+  }
+  
+  .iso{
+      font-size: 12px;
+      color: #212121
+  }
+  
+  .priceDiv{
+      display:flex;
+      gap: 10px;
+      align-items: center;
+  }
+  
+  .discountprice{
+      font-size: 16px;
+      font-weight: bold;
+      color: #212121 
+  }
+  
+  .price{
+      color: #757575;
+      font-size: 12px;
+      text-decoration: line-through;
+  }
+  
+  .discount {
+      border: 1px dashed #1aab2a;
+      color: #1aaa2a;
+      padding: 3px;
+      background-color: #f3fbf4;
+      font-size: 12px;
+      font-weight: 100;
+    }
