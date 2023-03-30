@@ -23,6 +23,9 @@
     line-height: 20px;
     cursor: pointer;
     text-align: left;
+    overflow: hidden;
+      text-overflow: ellipsis; 
+      white-space: nowrap;
 }
 
 .ratingDiv {
@@ -60,8 +63,12 @@
 
 .priceDiv>button {
     border: none;
-    background-color: white;
-    color: #FF6F61;
-    font-weight: bold;
+    /* background-color: #FF6F61;; */
+    color: #FF6F61;;
+    font-weight: 500;
     cursor: pointer;
+    border: 1px solid #FF6F61;
+    padding: 3px;
+    border-radius: 5px;
+
 }

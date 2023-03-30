@@ -6,11 +6,8 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { ayurveda_data } from "../Data/AyurvedaData"
 import ProductCard from '../../Component/ProductCard';
 import axios from 'axios';
-
-// let url = "https://good-pear-cheetah-tutu.cyclic.app/ayurveda"
 
 // Settings for the slider
 const settings = {

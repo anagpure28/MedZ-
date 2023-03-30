@@ -9,7 +9,6 @@ import "slick-carousel/slick/slick-theme.css";
 import { data } from "../Data/AyurvedaData"
 import LabTestCard from '../../Component/LabTestCard';
 
-// let url = "https://good-pear-cheetah-tutu.cyclic.app/ayurveda"
 
 // Settings for the slider
 const settings = {
@@ -19,7 +18,7 @@ const settings = {
   slidesToScroll: 3
 };
 
-export default function LabTestCarousel() {
+export default function LabTestCarousel({label}) {
   const [slider, setSlider] = React.useState(null);
   const [product, setProducts] = useState([...data])
   const top = useBreakpointValue({ base: '90%', md: '50%' });
@@ -63,13 +62,13 @@ export default function LabTestCarousel() {
         </IconButton>
 
         {/* Slider */}
-        <div style={{margin: "10px 0"}}>
+        <div style={{margin: "10px 0", padding: "10px"}}>
             <div style={{display: "flex", width: "97%", justifyContent: "space-between", margin: "auto"}}>
-                {/* <p style={{fontSize: "20px", fontWeight: "600" }}>{label}</p> */}
+                <p style={{fontSize: "20px", fontWeight: "600" }}>{label}</p>
                 <button style={{color: "white", backgroundColor: "#ff6f61", padding: "7px", fontSize: "14px", borderRadius: "5px", }}>SEE ALL</button>
             </div>
-            <div>
-                <Slider style={{ margin:'auto', padding:"12px"}} {...settings} ref={(slider) => setSlider(slider)}>
+            <div style={{padding: "20px"}}>
+                <Slider style={{ margin:'auto'}} {...settings} ref={(slider) => setSlider(slider)}>
                     {product?.map((el, index) => (
                         <LabTestCard key={index} {...el}/>
                     ))}

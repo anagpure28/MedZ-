@@ -12,7 +12,7 @@ function Homepage() {
       <Navbar />
       <FrontCarousel />
       <BrandCards />
-      <LabTestCarousel />
+      <LabTestCarousel label="Full body health checkups"/>
       <AyurvedaBrandsCards />
       <CardCarousel url="https://good-pear-cheetah-tutu.cyclic.app/vitamin" label="Top Vitamin Supplements"/>
       <CardCarousel url="https://good-pear-cheetah-tutu.cyclic.app/ayurveda" label="Ayurvedic products"/>
@@ -20,11 +20,11 @@ function Homepage() {
       <CardCarousel url="https://good-pear-cheetah-tutu.cyclic.app/teststrip" label="Test strips & lancets"/>
       <CardCarousel url="https://good-pear-cheetah-tutu.cyclic.app/supplements" label="Antioxidants | supplement of the week"/>
       <BrandCards />
-      <LabTestCarousel />
+      <LabTestCarousel label="Full body health checkups"/>
       <AyurvedaBrandsCards />
       <CardCarousel url="https://good-pear-cheetah-tutu.cyclic.app/vitamin" label="Top Vitamin Supplements"/>
       <CardCarousel url="https://good-pear-cheetah-tutu.cyclic.app/ayurveda" label="Ayurvedic products"/>
-      <LabTestCarousel />
+      <LabTestCarousel label="Full body health checkups"/>
       <AyurvedaBrandsCards />
       <CardCarousel url="https://good-pear-cheetah-tutu.cyclic.app/teststrip" label="Test strips & lancets"/>
       <Footer />
