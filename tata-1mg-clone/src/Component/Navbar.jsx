@@ -21,8 +21,6 @@ import { MdLocationPin, MdOutlineMyLocation } from "react-icons/md";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { BsCart3 } from "react-icons/bs";
-import { Login } from "../Pages/Login";
-import { Signup } from "../Pages/Signup";
 import Logo from "../Component/Logo/New_Logo.png";
 import { Link, NavLink } from "react-router-dom";
 export default function Navbar() {
@@ -51,7 +49,7 @@ export default function Navbar() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack
-            spacing={16}
+            spacing={8}
             alignItems={"center"}
             color={"black"}
             fontWeight={"bold"}
@@ -63,7 +61,7 @@ export default function Navbar() {
             </Box>
             <HStack
               as={"nav"}
-              spacing={8}
+              spacing={5}
               display={{ base: "none", md: "flex" }}
             >
               <Text
@@ -134,14 +132,14 @@ export default function Navbar() {
               </Text>
               <div style={{ marginLeft: "150px" }}>
                 <Center height="50px">
-                  <Login />
+                  <Link to={'/login'}>Login</Link>
                   <Divider
                     orientation="vertical"
                     height={"20px"}
                     margin={"10px"}
                     bgColor={"blackAlpha.900"}
                   />
-                  <Signup />
+                  <Link to={'/signup'}>Sign Up</Link>
                 </Center>
               </div>
               <Text
@@ -195,14 +193,14 @@ export default function Navbar() {
               ))}
               <div style={{ marginLeft: "150px" }}>
                 <Center height="50px">
-                  <Login />
+                  <Link to={'/login'}>Login</Link>
                   <Divider
                     orientation="vertical"
                     height={"20px"}
                     margin={"10px"}
                     bgColor={"blackAlpha.900"}
                   />
-                  <Signup />
+                  <Link to={'/signup'}>Sign Up</Link>
                 </Center>
               </div>
             </Stack>
@@ -304,11 +302,22 @@ export default function Navbar() {
       <div>
         <hr />
       </div>
-      <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }} justifyContent={'center'} maxW={'100%'} height={'50px'} bgColor={'#edeeee'} color={'black'}>
+      <HStack
+        as={"nav"}
+        spacing={4}
+        display={{ base: "none", md: "flex" }}
+        justifyContent={"center"}
+        maxW={"100%"}
+        height={"60px"}
+        bgColor={"white"}
+        color={"black"}
+      >
         {Links.map((link) => (
           <NavLink
-            style={({isActive})=>{
-              return isActive ? { display: "flex", alignItems: "center",color:'#ff6f61' } : {display: "flex", alignItems: "center",color:'black'}
+            style={({ isActive }) => {
+              return isActive
+                ? { display: "flex", alignItems: "center", color: "#ff6f61" }
+                : { display: "flex", alignItems: "center", color: "black" };
             }}
             to={link.path}
             key={link.path}
