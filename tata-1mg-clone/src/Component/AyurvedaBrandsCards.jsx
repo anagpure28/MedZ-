@@ -33,13 +33,19 @@ const brandData=[
 
 function AyurvedaBrandCards() {
   return (
-    <div style={{display:"flex",flexWrap:"wrap",padding:"10px 10px 20px 10px",justifyContent:'space-around',boxShadow:"rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"}}>
-        {brandData?.map((el,i)=>{
-            return <div style={{margin:"5px"}}>
-                <img style={{maxWidth:"120px",marginBottom:"10px"}} src={el.image} alt="" />
-                <span style={{maxWidth:"120px"}}>{el.name}</span>
-            </div>
-        })}
+    <div style={{margin: "40px 0"}}>
+        <div style={{display: "flex", width: "87%", justifyContent: "space-between", margin: "auto"}}>
+            <p style={{fontSize: "20px", fontWeight: "600" }}>Ayurveda top brands</p>
+            <button style={{color: "white", backgroundColor: "#ff6f61", padding: "7px", fontSize: "14px", borderRadius: "5px", }}>SEE ALL</button>
+        </div>
+        <div style={{display:"flex", margin: "15px 0",flexWrap:"wrap",padding:"20px 10px",justifyContent:'space-evenly',boxShadow:"rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"}}>
+            {brandData?.map((el,i)=>{
+                return <div style={{margin:"5px"}}>
+                    <img style={{maxWidth:"120px",marginBottom:"10px"}} src={el.image} alt="" />
+                    <span style={{maxWidth:"120px"}}>{el.name}</span>
+                </div>
+            })}
+        </div>
     </div>
   )
 }
