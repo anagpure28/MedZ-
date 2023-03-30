@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import Navbar from '../Component/Navbar'
 import Footer from './Footer'
 function Homepage() {
