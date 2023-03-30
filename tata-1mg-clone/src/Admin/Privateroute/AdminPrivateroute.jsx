@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom'
 
 function AdminPrivateroute({children}) {
   const {isAuth} = useSelector((state)=>{return state.AdminAuth})
-
+  console.log(isAuth)
   if(!isAuth){
     return <Navigate to="/adminlogin" />
   }

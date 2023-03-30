@@ -21,6 +21,9 @@ import AdminLogin from '../Admin/Pages/AdminLogin'
 import { Signup } from './Signup'
 import Dashboard from '../Admin/Pages/Dashboard'
 import AdminPrivateroute from '../Admin/Privateroute/AdminPrivateroute'
+import Userdetails from '../Admin/Pages/Userdetails'
+import Allproduct from '../Admin/Pages/Allproduct'
+import Editproudct from '../Admin/Pages/Editproudct'
 
 function AllRoutes() {
   return (
@@ -32,9 +35,15 @@ function AllRoutes() {
         <Route path="/products" element={<Products />}/>
         <Route path="/products/:id" element={<SignleProduct />}/>
         <Route path="*" element={<PageNotfound />}/>
-        <Route path='/adminlogin' element={<AdminLogin />}/>
-        <Route path='/dashboard' element={<AdminPrivateroute> <Dashboard /></AdminPrivateroute>}/>
+        {/* Admin */}
+        <Route path='/adminlogin' element={<AdminLogin />}/> 
+        <Route path='/dashboard' element={ <Dashboard />}/>
+        <Route path='/dashboard/userdetails' element={<AdminPrivateroute> <Userdetails /></AdminPrivateroute>}/>
+        <Route path='/dashboard/editproduct' element={<AdminPrivateroute> <Editproudct /></AdminPrivateroute>}/>
+        <Route path='/dashboard/allproducts' element={<AdminPrivateroute> <Allproduct /></AdminPrivateroute>}/>
 
+
+        {/* Admin */}
         {/*  */}
          <Route path='/health-resource' element={<HealthResource/>}/>
         <Route path='/vitamin-nutritiion' element={<VitaminNutrition/>}/>
