@@ -9,7 +9,7 @@ import {
 import axios from "axios";
 export const CreateUser = (data) => (dispatch) => {
   dispatch({ type: USER_REQUEST });
-  axios
+  return axios
     .post(`https://639b03f6d514150197480eef.mockapi.io/user/users`, data)
     .then((res) => {
       console.log(res);

@@ -9,7 +9,6 @@ import {
     VStack,
     Icon,
     useColorModeValue,
-    Link,
     Drawer,
     DrawerContent,
     Text,
@@ -17,6 +16,7 @@ import {
     BoxProps,
     FlexProps,
     Menu,
+    Link,
     MenuButton,
     MenuDivider,
     MenuItem,
@@ -36,12 +36,13 @@ import { IconType } from 'react-icons';
 import { ReactText } from 'react';
 import mypic from '../images/mypic.png'
 import Medz from '../images/MedZ+.png'
+import Theme from './Theme';
+import {Link as Routelink} from 'react-router-dom'
 const LinkItems = [
-    { name: 'Dashboard', icon: FiHome },
-    { name: 'User List', icon: FiTrendingUp },
-    { name: 'Update Product', icon: FiCompass },
-    { name: 'Delete Product', icon: FiStar },
-    { name: 'Edit Product', icon: FiSettings },
+    { name: 'Dashboard', icon: FiHome, path: "/dashboard" },
+    { name: 'Users', icon: FiTrendingUp, path: "/dashboard/userdetails" },
+    { name: 'Edit Products', icon: FiSettings, path: "/dashboard/editproduct" },
+    { name: 'All Products', icon: FiCompass, path: "/dashboard/allproducts" },
 ];
 
 export default function SidebarWithHeader({ children }) {
@@ -51,7 +52,7 @@ export default function SidebarWithHeader({ children }) {
             <SidebarContent
                 onClose={() => onClose}
                 display={{ base: 'none', md: 'block' }}
-            />
+            />          
             <Drawer
                 autoFocus={false}
                 isOpen={isOpen}
@@ -67,13 +68,11 @@ export default function SidebarWithHeader({ children }) {
             {/* mobilenav */}
             <MobileNav onOpen={onOpen} />
             <Box ml={{ base: 0, md: 60 }} p="4">
-                {children}
+                {children}              
             </Box>
         </Box>
     );
 }
-
-
 const SidebarContent = ({ onClose, ...rest }) => {
     return (
         <Box
@@ -85,6 +84,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
             pos="fixed"
             h="full"
             {...rest}>
+                
             <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
                 <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
                     <img style={{ marginTop: "30px" }} width="500px" src={Medz} alt="" />
@@ -93,10 +93,13 @@ const SidebarContent = ({ onClose, ...rest }) => {
             </Flex>
             {LinkItems.map((link) => (
                 <NavItem _hover={{
-                    bg:"#FF6F61",
-                    color:"white"
+                    bg: "#FF6F61",
+                    color: "white"
                 }} key={link.name} icon={link.icon}>
-                    {link.name}
+                    <Routelink to={link.path}>
+                        {link.name}
+                    </Routelink>
+
                 </NavItem>
             ))}
         </Box>
@@ -129,7 +132,7 @@ const NavItem = ({ icon, children, ...rest }) => {
                         as={icon}
                     />
                 )}
-                {children}
+                {children}               
             </Flex>
         </Link>
     );
@@ -165,6 +168,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
             </Text>
 
             <HStack spacing={{ base: '0', md: '6' }}>
+                <Theme />
                 <IconButton
                     size="lg"
                     variant="ghost"
