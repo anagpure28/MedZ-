@@ -33,7 +33,7 @@ function AllRoutes() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/payment" element={<Payment />}/>
         <Route path="/products" element={<Products />}/>
-        <Route path="/products/:id" element={<SignleProduct />}/>
+        <Route path="/products/:id" element={<Privateroute><SignleProduct /></Privateroute>}/>
         <Route path="*" element={<PageNotfound />}/>
         {/* Admin */}
         <Route path='/adminlogin' element={<AdminLogin />}/> 
