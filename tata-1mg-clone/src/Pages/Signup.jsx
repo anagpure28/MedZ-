@@ -19,8 +19,8 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import Navbar from "../Component/Navbar";
 import Footer from "./Footer";
 import Logo from "../Component/Logo/New_Logo.png";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { CreateUser } from "../Redux/AuthReducer/action";
 const initialState = {
   firstname: "",
@@ -36,6 +36,8 @@ export default function Signup() {
   const [formState, setFormState] = useState(initialState);
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
+  const isAuth = useSelector((store)=>store.authReducer.isAuth);
+  console.log(isAuth);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormState({ ...formState, [name]: value });
@@ -43,21 +45,9 @@ export default function Signup() {
   const handleUser = (e) => {
     e.preventDefault();
     dispatch(CreateUser(formState)).then(()=>{
-      toast({
-        title: 'Account created.',
-        description: "We've created your account for you.",
-        status: 'success',
-        duration: 1000,
-        isClosable: true,
-      })
-    }).catch(()=>{
-      toast({
-        title: 'Account created.',
-        description: "Something has wrong!",
-        status: 'error',
-        duration: 1000,
-        isClosable: true,
-      })
+      if(isAuth){
+        return <Navigate to={'/login'} />
+      }
     })
     setFormState(initialState);
   };
@@ -92,6 +82,7 @@ export default function Signup() {
                       value={formState.firstname}
                       name={"firstname"}
                       onChange={handleChange}
+                      focusBorderColor='#ff6f61'
                     />
                   </FormControl>
                 </Box>
@@ -110,6 +101,7 @@ export default function Signup() {
                       value={formState.lastname}
                       name={"lastname"}
                       onChange={handleChange}
+                      focusBorderColor='#ff6f61'
                     />
                   </FormControl>
                 </Box>
@@ -128,6 +120,7 @@ export default function Signup() {
                   value={formState.email}
                   name={"email"}
                   onChange={handleChange}
+                  focusBorderColor='#ff6f61'
                 />
               </FormControl>
               <FormControl id="age" isRequired>
@@ -144,6 +137,7 @@ export default function Signup() {
                   value={formState.age}
                   name={"age"}
                   onChange={handleChange}
+                  focusBorderColor='#ff6f61'
                 />
               </FormControl>
               <FormControl id="gender" isRequired>
@@ -155,6 +149,7 @@ export default function Signup() {
                   value={formState.gender}
                   name={"gender"}
                   onChange={handleChange}
+                  focusBorderColor='#ff6f61'
                 >
                   <option style={{ backgroundColor: "white" }} value="male">
                     Male
@@ -173,6 +168,7 @@ export default function Signup() {
                   value={formState.maritalstatus}
                   name={"maritalstatus"}
                   onChange={handleChange}
+                  focusBorderColor='#ff6f61'
                 >
                   <option style={{ backgroundColor: "white" }} value="single">
                     Single
@@ -197,6 +193,7 @@ export default function Signup() {
                     value={formState.password}
                     name={"password"}
                     onChange={handleChange}
+                    focusBorderColor='#ff6f61'
                   />
                   <InputRightElement h={"full"}>
                     <Button

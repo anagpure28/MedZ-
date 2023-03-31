@@ -15,7 +15,7 @@ import PageNotfound from './PageNotfound'
 import Payment from './Payment'
 import PersonalCare from './PersonalCare'
 import Products from './Products'
-import SignleProduct from './SignleProduct'
+import {SingleProduct} from './SingleProduct'
 import VitaminNutrition from './VitaminNutrition'
 import AdminLogin from '../Admin/Pages/AdminLogin'
 import Dashboard from '../Admin/Pages/Dashboard'
@@ -34,7 +34,7 @@ function AllRoutes() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/payment" element={<Payment />}/>
         <Route path="/products" element={<Products />}/>
-        <Route path="/products/:id" element={<SignleProduct />}/>
+        <Route path="/products/:id" element={<SingleProduct />}/>
         <Route path="*" element={<PageNotfound />}/>
         {/* Admin */}
         <Route path='/adminlogin' element={<AdminLogin />}/> 
@@ -55,9 +55,9 @@ function AllRoutes() {
         <Route path='/ayurveda-products' element={<AyurvedaProducts/>}/>
         <Route path='/homeopathy' element={<Homeopathy/>}/>
         <Route path='/featured' element={<Featured/>}/>
+        <Route path="/:category/:id" element={<SingleProduct/>}/>
         <Route path="/cart" element={<Cart/>}/>
          {/*Route for category-wise single product page*/}
-         <Route path="/:category/:id" element={<SignleProduct/>}/>
     </Routes>
   )
 }
