@@ -25,7 +25,7 @@ function PageNotfound() {
       </Text>
 
       <Button
-        colorScheme="teal"
+        colorScheme="orange"
         bgGradient="linear(to-r, pink.400, orange.400)"
         color="white"
         variant="solid">
