@@ -16,8 +16,6 @@ import {
   Center,
   Spinner,
   RadioGroup,
-  Radio,
-  Stack,
 } from "@chakra-ui/react";
 import { HiOutlineMinusCircle } from "react-icons/hi";
 import { IoIosAddCircleOutline } from "react-icons/io";
@@ -26,15 +24,18 @@ import { getVitamin } from "../Redux/AllProductsReducer/action";
 import ProductCard from "../Component/ProductCard";
 import { useLocation, useSearchParams } from "react-router-dom";
 import PageNotfound from "./PageNotfound";
+import Pagination from "../Component/Pagination";
 const VitaminNutrition = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialBrand = searchParams.getAll("brand");
   const initialCategory = searchParams.getAll("category");
+  const initialPrice = searchParams.get('price')
   const dispatch = useDispatch();
   const location = useLocation();
   const [brand, setBrand] = useState(initialBrand || []);
   const [category, setCotegory] = useState(initialCategory || []);
-  const [price,setPrice] = useState("");
+  const [price,setPrice] = useState(initialPrice || "");
+  const [page,setPage] = useState(0);
   const { vitamins, isLoading, isError } = useSelector((store) => {
     // console.log(store.allProdcutReducer);
     return {
@@ -43,7 +44,7 @@ const VitaminNutrition = () => {
       isError: store.allProdcutReducer.isError,
     };
   });
-
+  // console.log(vitamins);
   const handleBrand = (e) => {
     let newBrand = [...brand];
     const value = e.target.value;
@@ -73,25 +74,30 @@ const VitaminNutrition = () => {
   // search Param object
   const paramObj = {
     params: {
+      _limit : 6,
       brand: searchParams.getAll("brand"),
       category: searchParams.getAll("category"),
       _sort : searchParams.get('price') && 'price',
-      _order : searchParams.get('price')
+      _order : searchParams.get('price'),
+      _page : searchParams.get('page')
     },
   };
 
   useEffect(() => {
-    dispatch(getVitamin(paramObj));
+    dispatch(getVitamin(paramObj)).then((res)=>{
+      console.log(res);
+    })
   }, [location.search]);
 
   useEffect(() => {
     let params = {
       brand,
       category,
+      page,
     };
     price && (params.price = price);
     setSearchParams(params);
-  }, [brand, category,price]);
+  }, [brand, category,price,page]);
   // console.log(vitamins);
   return (
     <>
@@ -109,10 +115,12 @@ const VitaminNutrition = () => {
           <Flex>
             <Box
               width={"25%"}
-              border={"1px solid gray"}
+              // border={"1px solid gray"}
               bgColor={"white"}
               textAlign={"left"}
               padding={"15px"}
+              height={'50%'}
+              marginTop={'10px'}
             >
               <Text marginLeft={"5px"} fontWeight={"bold"}>
                 FILTERS
@@ -312,10 +320,10 @@ const VitaminNutrition = () => {
                         <Flex direction={"column"}>
                         <RadioGroup>
                          <div onChange={handleSortByPrice}>
-                            <input type="radio" name='order' value={'asc'} />
+                            <input type="radio" name='order' value={'asc'} defaultChecked={price==='asc'} />
                             <label>Ascending </label>
                             <br/>
-                            <input type="radio" name='order' value={'desc'} />
+                            <input type="radio" name='order' value={'desc'} defaultChecked={price==='desc'}/>
                             <label>Descending</label>
                          </div>
                         </RadioGroup>
@@ -326,7 +334,8 @@ const VitaminNutrition = () => {
                 </AccordionItem>
               </Accordion>
             </Box>
-            <Box width={"75%"} border={"1px solid gray"} padding={"10px"}>
+            {/* Paroduct Page */}
+            <Box width={"75%"} padding={"10px"}>
               <Flex direction={"column"} rowGap={"10px"}>
                 <Box>
                   <Image src="https://onemg.gumlet.io/6efee262-a7d7-4ecb-b453-aec57a5ad054_1676018016.jpg?w=1062&h=124&format=auto" />
@@ -366,12 +375,13 @@ const VitaminNutrition = () => {
                     marginLeft: "25px",
                   }}
                 >
-                  {vitamins &&
-                    vitamins.map((item, index) => (
+                  {
+                    vitamins?.map((item, index) => (
                       <ProductCard key={index} {...item} />
                     ))}
                 </div>
               )}
+              <Pagination currentPage={page} setPage={setPage} />
             </Box>
           </Flex>
         </Container>
