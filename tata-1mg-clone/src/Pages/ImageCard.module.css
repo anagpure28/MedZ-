@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+}
+.box>img{
+    margin: auto;
+}
+.main{
+    width: 75%;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main>img{
+    width: 35%;
+}
