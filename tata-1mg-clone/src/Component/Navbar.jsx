@@ -163,7 +163,7 @@ export default function Navbar() {
               color: "black",
             }}
           >
-            <BsCart3 style={{ fontSize: "25px" }} />
+           <Link to="/cart"> <BsCart3 style={{ fontSize: "25px" }} /></Link>
             <Text
               fontWeight={"bold"}
               transform="scale(1.0)"

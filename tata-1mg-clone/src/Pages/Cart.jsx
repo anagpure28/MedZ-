@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from "./Cart.module.css";
 import Navbar from "../Component/Navbar";
 import Footer from "./Footer";
@@ -134,7 +134,7 @@ import Footer from "./Footer";
 
 function Cart() {
 
-  const [cart,setCart] = useState(null);
+  const [cart,setCart] = useState([]);
 
   useEffect(()=>{
     let cartData = JSON.parse(localStorage.getItem("cart")) || [];
