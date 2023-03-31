@@ -37,9 +37,9 @@ function AllRoutes() {
         <Route path="*" element={<PageNotfound />}/>
         {/* Admin */}
         <Route path='/adminlogin' element={<AdminLogin />}/> 
-        <Route path='/dashboard' element={ <Dashboard />}/>
-        <Route path='/dashboard/userdetails' element={<AdminPrivateroute> <Userdetails /></AdminPrivateroute>}/>
-        <Route path='/dashboard/editproduct' element={<AdminPrivateroute> <Editproudct /></AdminPrivateroute>}/>
+        <Route path='/dashboard' element={ <Dashboard />}/> 
+        <Route path='/dashboard/userdetails' element={ <Userdetails />}/>
+        <Route path='/dashboard/editproduct' element={ <Editproudct />}/>
         <Route path='/dashboard/allproducts' element={<AdminPrivateroute> <Allproduct /></AdminPrivateroute>}/>
 
 

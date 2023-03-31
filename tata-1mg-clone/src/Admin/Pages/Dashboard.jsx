@@ -21,6 +21,7 @@ import {
   MenuDivider,
   MenuItem,
   MenuList,
+  Button,
 } from '@chakra-ui/react';
 import {
   FiHome,
@@ -39,6 +40,7 @@ import Medz from '../images/MedZ+.png'
 import Theme from '../Components/Theme';
 import { Link as Routelink } from 'react-router-dom'
 import styled from '@emotion/styled';
+import Dash from '../Components/Dash'
 const LinkItems = [
   { name: 'Dashboard', icon: FiHome, path: "/dashboard" },
   { name: 'Users', icon: FiTrendingUp, path: "/dashboard/userdetails" },
@@ -70,17 +72,7 @@ export default function Dashboard({ children }) {
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
-        <DIV>
-
-          {/* <div className='.categories'>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div> */}
-
-        </DIV>
-
+        <Dash />
       </Box>
     </Box>
   );
@@ -114,8 +106,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         }} key={link.name} icon={link.icon}>
           <Routelink to={link.path}>
             {link.name}
-          </Routelink>
-
+          </Routelink>         
         </NavItem>
 
 
@@ -127,7 +118,6 @@ const SidebarContent = ({ onClose, ...rest }) => {
 
 const NavItem = ({ icon, children, ...rest }) => {
   return (
-    <Link href="#" style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
       <Flex
         align="center"
         p="4"
@@ -152,7 +142,7 @@ const NavItem = ({ icon, children, ...rest }) => {
         )}
         {children}
       </Flex>
-    </Link>
+    
   );
 };
 
