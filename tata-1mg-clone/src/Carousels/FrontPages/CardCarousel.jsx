@@ -13,7 +13,7 @@ import axios from 'axios';
 const settings = {
   infinite: true,
   speed: 1500,
-  slidesToShow: 6,
+  slidesToShow: 5,
   slidesToScroll: 3
 };
 
