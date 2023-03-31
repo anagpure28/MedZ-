@@ -15,20 +15,26 @@ import Navbar from "../Component/Navbar";
 import Footer from "./Footer";
 import Logo from "../Component/Logo/New_Logo.png";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { userLogin } from "../Redux/AuthReducer/action";
+import { useLocation, useNavigate } from "react-router-dom";
 export function Login() {
   const toast = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const { user } = useSelector((store) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { user,isAuth } = useSelector((store) => {
     return {
       user: store.authReducer.users,
+      isAuth : store.authReducer.isAuth
     };
   });
+  console.log(isAuth);
   const handleLogin = (e) => {
     e.preventDefault();
+    dispatch(userLogin).then(()=>{
     let flag = false;
     for (let i = 0; i < user.length; i++) {
       if (user[i].email === email && user[i].password === password) {
@@ -38,15 +44,16 @@ export function Login() {
     }
     if (flag) {
       toast({
-        title: "Account created.",
+        title: "Logged In 👍.",
         description: "Login Successfully!",
         status: "success",
         duration: 2000,
         isClosable: true,
       });
+      navigate(location.state,{replace : true})
     } else {
       toast({
-        title: "Account created.",
+        title: "Login Failed 🙏.",
         description: "Invalid email and password!",
         status: "error",
         duration: 2000,
@@ -55,10 +62,11 @@ export function Login() {
     }
     setEmail("");
     setPassword("");
+    })
   };
-  useEffect(() => {
-    dispatch(userLogin);
-  }, []);
+  // useEffect(() => {
+  //   dispatch(userLogin);
+  // }, []);
   return (
     <>
       <Navbar />
