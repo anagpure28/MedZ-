@@ -1,0 +1,152 @@
+.main{
+    /* border: 1px solid black; */
+    width: 80%;
+    margin: auto;
+    display: flex;
+    padding: 10px;
+    gap:10px;
+    background-color: #F5F5F5;
+    justify-content: space-around;
+}
+
+.itemcontainerMain{
+    /* border: 1px solid red; */
+    width: 66%;
+}
+
+h1{
+    text-align:left;
+    font-size: 16px;
+}
+
+.itemContainer{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.cartitemDiv{
+    /* border: 1px solid black; */
+    background-color: #FFFFFF;
+    padding: 15px;
+}
+
+.cartitemDiv div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin: 5px 0px; */
+}
+
+.cartitemDiv>div:first-child>span{
+    font-weight: bold;
+    color: #212121;
+    font-size: 16px;
+}
+
+.cartitemDiv>div:nth-child(2)>span{
+    color: #9E9E9E;
+    font-size: 14px;
+}
+
+.cartitemDiv>div:nth-child(2)>span:nth-child(2){
+    text-decoration:line-through;
+}
+
+.productimageDiv>img{
+    width: 80px;
+    height: 80px;
+    border: 1px solid grey;
+    padding: 5px;
+}
+
+.cartitemDiv>div:nth-child(4)>div{
+    cursor: pointer;
+}
+
+.cartitemDiv>div:nth-child(4)>div:first-child>span{
+    color: #9E9E9E;
+    font-size: 14px;
+}
+
+.cartsummaryMain{
+    width:33%;
+    margin-top: 14px;
+    /* position: fixed;
+    z-index: 999;
+    right: 15px;
+    top: 50px; */
+}
+
+.cartsummary{
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.cartsummary>div{
+    /* border: 1px solid yellow; */
+    height: 50px;
+    width : 100%;
+    padding:10px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF;
+}
+
+.cartsummary>div>span{
+    color: #757575;
+    font-size: 14px;
+}
+
+.cartsummary>div:nth-child(6)>span{
+    font-weight: bold;
+    color: #767676;
+    font-size: 16px;
+}
+
+.cartsummary>div:nth-child(7){
+    background-color: #E4F6E7;
+}
+
+.cartsummary>div:nth-child(7)>span:last-child{
+    color: #1AAB2A;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.buttonDiv{
+    background-color: #FFFFFF;
+    padding: 10px;
+    margin: 10px;
+    height:85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.checkoutButton{
+    color:white;
+    background-color: #FF6F61;
+    border:1px solid #FF6F61;
+    height:85%;
+    width: 95%;
+}
+
+@media screen and (max-width:850px){
+    .main{
+        flex-direction: column;
+    }
+
+    .itemcontainerMain{
+        width: 100%;
+    }
+
+    .cartsummaryMain{
+        width:100%;
+    }
+
+    /* .buttonDiv{
+        width:100%;
+        position: fixed;
+        bottom:0;
+    } */
+}

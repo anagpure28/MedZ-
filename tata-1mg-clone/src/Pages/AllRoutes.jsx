@@ -24,6 +24,7 @@ import Userdetails from '../Admin/Pages/Userdetails'
 import Allproduct from '../Admin/Pages/Allproduct'
 import Editproudct from '../Admin/Pages/Editproudct'
 import Signup from './Signup'
+import Cart from './Cart'
 
 function AllRoutes() {
   return (
@@ -54,6 +55,9 @@ function AllRoutes() {
         <Route path='/ayurveda-products' element={<AyurvedaProducts/>}/>
         <Route path='/homeopathy' element={<Homeopathy/>}/>
         <Route path='/featured' element={<Featured/>}/>
+        <Route path="/cart" element={<Cart/>}/>
+         {/*Route for category-wise single product page*/}
+         <Route path="/:category/:id" element={<SignleProduct/>}/>
     </Routes>
   )
 }

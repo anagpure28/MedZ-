@@ -1,8 +1,11 @@
 import React from 'react'
 import prodstyles from "./ProductCard.module.css"
+import { useLocation } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-function ProductCard({title,rating,price,discountprice,images}) {
+function ProductCard({title,rating,price,discountprice,images,id}) {
   return (
+        <Link to={`${id}`}>
         <div className={prodstyles.prodBox}>
            <img
              src={images[0]}
@@ -33,7 +36,8 @@ function ProductCard({title,rating,price,discountprice,images}) {
                View
              </button>
            </div>
-         </div>    
+         </div>
+         </Link>    
   )
 }
 
