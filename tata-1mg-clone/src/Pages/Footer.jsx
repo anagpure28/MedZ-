@@ -5,7 +5,6 @@ import {
   Stack,
   SimpleGrid,
   Text,
-  Link,
   VisuallyHidden,
   chakra,
   useColorModeValue,
@@ -19,7 +18,7 @@ import {
   FaLinkedin,
   FaFacebook,
 } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
 const ListHeader = ({ children }) => {
   return (
     <Text fontWeight={"500"} fontSize={"lg"} mb={2}>
@@ -116,38 +115,38 @@ export default function LargeWithAppLinksAndSocial() {
           <SimpleGrid columns={{ base: 1, sm: 2, md: 5 }} spacing={8}>
             <Stack align={"flex-start"}>
               <ListHeader>Know Us</ListHeader>
-              <Link href={"#"}>About Us</Link>
-              <Link href={"#"}>Contact us</Link>
-              <Link href={"#"}>Press Coverage</Link>
-              <Link href={"#"}>Careers</Link>
-              <Link href={"#"}>Business Partnership</Link>
-              <Link href={"#"}>Become a Health Partner</Link>
-              <Link href={"#"}>Corporate Goverance</Link>
+              <Link to={'/about'}>About Us</Link>
+              <Link to={'#'}>Contact us</Link>
+              <Link to={'#'}>Press Coverage</Link>
+              <Link to={'#'}>Careers</Link>
+              <Link to={'#'}>Business Partnership</Link>
+              <Link to={'#'}>Become a Health Partner</Link>
+              <Link to={'#'}>Corporate Goverance</Link>
             </Stack>
 
             <Stack align={"flex-start"}>
               <ListHeader>Our Policies</ListHeader>
-              <Link href={"#"}>Privacy Policy</Link>
-              <Link href={"#"}>Terms & Conditions</Link>
-              <Link href={"#"}>Editorial Policy</Link>
-              <Link href={"#"}>Return Policy</Link>
-              <Link href={"#"}>IP Policy</Link>
-              <Link href={"#"}>Grivence Redressal Policy</Link>
-              <Link href={"#"}>Fake Jobs and Fraud Disclaimer</Link>
+              <Link to={'#'}>Privacy Policy</Link>
+              <Link to={'#'}>Terms & Conditions</Link>
+              <Link to={'#'}>Editorial Policy</Link>
+              <Link to={'#'}>Return Policy</Link>
+              <Link to={'#'}>IP Policy</Link>
+              <Link to={'#'}>Grivence Redressal Policy</Link>
+              <Link to={'#'}>Fake Jobs and Fraud Disclaimer</Link>
             </Stack>
 
             <Stack align={"flex-start"}>
               <ListHeader>Out Services</ListHeader>
-              <Link href={"#"}>Order Medicines</Link>
-              <Link href={"#"}>Book Lab Tests</Link>
-              <Link href={"#"}>Ayurveda Articles</Link>
-              <Link href={"#"}>Hindi Articles</Link>
-              <Link href={"#"}>Care Plan</Link>
+              <Link to={'#'}>Order Medicines</Link>
+              <Link to={'#'}>Book Lab Tests</Link>
+              <Link to={'#'}>Ayurveda Articles</Link>
+              <Link to={'#'}>Hindi Articles</Link>
+              <Link to={'#'}>Care Plan</Link>
             </Stack>
 
             <Stack align={"flex-start"}>
               <ListHeader>Connect</ListHeader>
-              <Link href={"#"}>Social Links</Link>
+              <Link to={'#'}>Social Links</Link>
               <div>
                 <Stack direction={"row"} spacing={2}>
                   <SocialButton

@@ -32,8 +32,13 @@ export function SingleProduct() {
   const url = {
     "vitamin-nutritiion" : "https://good-pear-cheetah-tutu.cyclic.app/vitamin",
     "ayurveda-products"  : "https://good-pear-cheetah-tutu.cyclic.app/ayurveda",
-    "test-strips"        : "https://good-pear-cheetah-tutu.cyclic.app/teststrip",
-    "supplements"        : "https://good-pear-cheetah-tutu.cyclic.app/supplements"
+    "diabetes"        : "https://good-pear-cheetah-tutu.cyclic.app/teststrip",
+    "personal-care"        : "https://good-pear-cheetah-tutu.cyclic.app/supplements",
+    "health-resource" : "https://good-pear-cheetah-tutu.cyclic.app/vitamin",
+    "health-device" : "https://good-pear-cheetah-tutu.cyclic.app/teststrip",
+    "health-condition" : "https://good-pear-cheetah-tutu.cyclic.app/teststrip",
+    "homeopathy" : "https://good-pear-cheetah-tutu.cyclic.app/supplements",
+    "featured" : "https://good-pear-cheetah-tutu.cyclic.app/ayurveda",
   }
 
   const addToCart = () => {
