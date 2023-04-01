@@ -4,19 +4,21 @@ import { PieChart, Pie, Cell, Legend } from 'recharts';
 
  
   const PieChartComponent = () => {
-    const {userdata}= useSelector((state)=>{return state.AdminUserData})
-    
-    
+    const {AdminUserData,AdminAlldataReducer}= useSelector((state)=>{return state})
+    const{userdata}=AdminUserData
+    const{ayurveda,supliment,teststrip,vitamin}=AdminAlldataReducer
     const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
+    
     const data = [
-        { name: 'Total Users', value:userdata.length },
-        { name: 'Component 2', value: 35 },
-        { name: 'Component 3', value: 20 },
-        { name: 'Component 4', value: 10 },
-        { name: 'Component 5', value: 10 },
+        { name: 'Total Users', value:userdata.length},
+        { name: 'Vitamin Products', value: vitamin.length},
+        { name: 'Ayurvedic Products', value: ayurveda.length },
+        { name: 'Supliments', value: supliment.length },
+        { name: 'Test Strips', value: teststrip.length },
       ];
+
     return (
-      <PieChart width={700} height={400}>
+      <PieChart style={{display:"block"}} width={700} height={400}>
         <Pie
           data={data}
           dataKey="value"

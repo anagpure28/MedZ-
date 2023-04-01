@@ -30,6 +30,7 @@ export const reducer =(state=init,{type,payload})=>{
         case GET_VITAMIN_SUCCESS:{
             return{
                 ...state,
+                isLoading:false,
                 vitamin:payload
             }
         }
@@ -44,7 +45,7 @@ export const reducer =(state=init,{type,payload})=>{
         case GET_TESTSTRIP_SUCCESS:{
             return{
                 ...state,
-                ayurveda:payload
+                teststrip:payload
             }
         }
 
