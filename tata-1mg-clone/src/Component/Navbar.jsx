@@ -22,9 +22,12 @@ import { BiSearchAlt2 } from "react-icons/bi";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { BsCart3 } from "react-icons/bs";
 import Logo from "../Component/Logo/New_Logo.png";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, Navigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [show, setShow] = useState(false);
+  const [user,setUser] = useState("")
   const Links = [
     { path: "/health-resource", title: "Health Resource Center" },
     { path: "/vitamin-nutritiion", title: "Vitamins & Nutrition" },
@@ -36,6 +39,13 @@ export default function Navbar() {
     { path: "/homeopathy", title: "Homeopathy" },
     { path: "/featured", title: "Featured" },
   ];
+  useEffect(()=>{
+    let user = localStorage.getItem('user')
+    setUser(user)
+  })
+  if(show){
+    localStorage.removeItem('user')
+  }
   return (
     <>
       <Box px={4} bgColor={"whiteAlpha.900"}>
@@ -130,17 +140,46 @@ export default function Navbar() {
               >
                 CARE PLANE
               </Text>
-              <div style={{ marginLeft: "150px" }}>
-                <Center height="50px">
-                  <Link to={'/login'}>Login</Link>
-                  <Divider
-                    orientation="vertical"
-                    height={"20px"}
-                    margin={"10px"}
-                    bgColor={"blackAlpha.900"}
-                  />
-                  <Link to={'/signup'}>Sign Up</Link>
-                </Center>
+
+              <div style={{ marginLeft: "100px" }}>
+                {show ? (
+                  <Center height="50px">
+                    <Link to={"/login"}>Login</Link>
+                    <Divider
+                      orientation="vertical"
+                      height={"20px"}
+                      margin={"10px"}
+                      bgColor={"blackAlpha.900"}
+                    />
+                    <Link to={"/signup"}>Sign Up</Link>
+                  </Center>
+                ) : (
+                  <Text>
+                    {user} 
+                    <Button
+                      onClick={() => setShow(!show)}
+                      marginLeft={5}
+                      width={"100px"}
+                      h={"35px"}
+                      px={4}
+                      fontSize={"sm"}
+                      rounded={"full"}
+                      bg={"#ff6f61"}
+                      color={"white"}
+                      boxShadow={
+                        "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
+                      }
+                      _hover={{
+                        bg: "blue.500",
+                      }}
+                      _focus={{
+                        bg: "blue.500",
+                      }}
+                    >
+                      Logout
+                    </Button>
+                  </Text>
+                )}
               </div>
               <Text
                 transform="scale(1.0)"
@@ -163,7 +202,10 @@ export default function Navbar() {
               color: "black",
             }}
           >
-           <Link to="/cart"> <BsCart3 style={{ fontSize: "25px" }} /></Link>
+            <Link to="/cart">
+              {" "}
+              <BsCart3 style={{ fontSize: "25px" }} />
+            </Link>
             <Text
               fontWeight={"bold"}
               transform="scale(1.0)"
@@ -193,14 +235,14 @@ export default function Navbar() {
               ))}
               <div style={{ marginLeft: "150px" }}>
                 <Center height="50px">
-                  <Link to={'/login'}>Login</Link>
+                  <Link to={"/login"}>Login</Link>
                   <Divider
                     orientation="vertical"
                     height={"20px"}
                     margin={"10px"}
                     bgColor={"blackAlpha.900"}
                   />
-                  <Link to={'/signup'}>Sign Up</Link>
+                  <Link to={"/signup"}>Sign Up</Link>
                 </Center>
               </div>
             </Stack>
@@ -304,7 +346,7 @@ export default function Navbar() {
       </div>
       <HStack
         as={"nav"}
-        spacing={4}
+        spacing={2}
         display={{ base: "none", md: "flex" }}
         justifyContent={"center"}
         maxW={"100%"}
@@ -316,8 +358,18 @@ export default function Navbar() {
           <NavLink
             style={({ isActive }) => {
               return isActive
-                ? { display: "flex", alignItems: "center", color: "#ff6f61" }
-                : { display: "flex", alignItems: "center", color: "black" };
+                ? {
+                    display: "flex",
+                    alignItems: "center",
+                    color: "#ff6f61",
+                    fontSize: "14px",
+                  }
+                : {
+                    display: "flex",
+                    alignItems: "center",
+                    color: "black",
+                    fontSize: "14px",
+                  };
             }}
             to={link.path}
             key={link.path}

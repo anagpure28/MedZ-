@@ -29,13 +29,14 @@ const VitaminNutrition = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialBrand = searchParams.getAll("brand");
   const initialCategory = searchParams.getAll("category");
-  const initialPrice = searchParams.get('price')
+  const initialPrice = searchParams.get("price");
   const dispatch = useDispatch();
   const location = useLocation();
   const [brand, setBrand] = useState(initialBrand || []);
   const [category, setCotegory] = useState(initialCategory || []);
-  const [price,setPrice] = useState(initialPrice || "");
-  const [page,setPage] = useState(0);
+  const [price, setPrice] = useState(initialPrice || "");
+  const initialPage = searchParams.get("page");
+  const [page, setPage] = useState(+initialPage || 1);
   const { vitamins, isLoading, isError } = useSelector((store) => {
     // console.log(store.allProdcutReducer);
     return {
@@ -44,7 +45,7 @@ const VitaminNutrition = () => {
       isError: store.allProdcutReducer.isError,
     };
   });
-  // console.log(vitamins);
+
   const handleBrand = (e) => {
     let newBrand = [...brand];
     const value = e.target.value;
@@ -67,28 +68,24 @@ const VitaminNutrition = () => {
     setCotegory(newCategory);
   };
 
-  const handleSortByPrice=(e)=>{
-    setPrice(e.target.value)
-  }
+  const handleSortByPrice = (e) => {
+    setPrice(e.target.value);
+  };
   // console.log(category);
   // search Param object
   const paramObj = {
     params: {
-      _limit : 6,
+      _limit: 6,
       brand: searchParams.getAll("brand"),
       category: searchParams.getAll("category"),
-      _sort : searchParams.get('price') && 'price',
-      _order : searchParams.get('price'),
-      _page : searchParams.get('page')
+      _sort: searchParams.get("price") && "price",
+      _order: searchParams.get("price"),
+      _page: searchParams.get("page"),
     },
   };
-
   useEffect(() => {
-    dispatch(getVitamin(paramObj)).then((res)=>{
-      console.log(res);
-    })
+    dispatch(getVitamin(paramObj));
   }, [location.search]);
-
   useEffect(() => {
     let params = {
       brand,
@@ -97,7 +94,7 @@ const VitaminNutrition = () => {
     };
     price && (params.price = price);
     setSearchParams(params);
-  }, [brand, category,price,page]);
+  }, [brand, category, price, page]);
   // console.log(vitamins);
   return (
     <>
@@ -119,13 +116,13 @@ const VitaminNutrition = () => {
               bgColor={"white"}
               textAlign={"left"}
               padding={"15px"}
-              height={'50%'}
-              marginTop={'10px'}
+              height={"50%"}
+              marginTop={"10px"}
             >
-              <Text marginLeft={"5px"} fontWeight={"bold"}>
+              <Text marginLeft={"15px"} fontWeight={"bold"} fontSize={"14px"}>
                 FILTERS
               </Text>
-              <Divider orientation="horizontal" width="100%" />
+              <Divider orientation="horizontal" width="100%" backgroundColor={"blackAlpha.900"} />
               <Accordion allowMultiple>
                 <AccordionItem>
                   {({ isExpanded }) => (
@@ -219,6 +216,7 @@ const VitaminNutrition = () => {
                     </>
                   )}
                 </AccordionItem>
+                <Divider orientation="horizontal" width="100%" backgroundColor={'blackAlpha.900'} />
                 <AccordionItem>
                   {({ isExpanded }) => (
                     <>
@@ -295,6 +293,7 @@ const VitaminNutrition = () => {
                     </>
                   )}
                 </AccordionItem>
+                <Divider orientation="horizontal" width="100%" backgroundColor={'blackAlpha.900'} />
                 <AccordionItem>
                   {({ isExpanded }) => (
                     <>
@@ -318,20 +317,31 @@ const VitaminNutrition = () => {
                       </h2>
                       <AccordionPanel pb={4}>
                         <Flex direction={"column"}>
-                        <RadioGroup>
-                         <div onChange={handleSortByPrice}>
-                            <input type="radio" name='order' value={'asc'} defaultChecked={price==='asc'} />
-                            <label>Ascending </label>
-                            <br/>
-                            <input type="radio" name='order' value={'desc'} defaultChecked={price==='desc'}/>
-                            <label>Descending</label>
-                         </div>
-                        </RadioGroup>
+                          <RadioGroup>
+                            <div onChange={handleSortByPrice}>
+                              <input
+                                type="radio"
+                                name="order"
+                                value={"asc"}
+                                defaultChecked={price === "asc"}
+                              />
+                              <label>Ascending </label>
+                              <br />
+                              <input
+                                type="radio"
+                                name="order"
+                                value={"desc"}
+                                defaultChecked={price === "desc"}
+                              />
+                              <label>Descending</label>
+                            </div>
+                          </RadioGroup>
                         </Flex>
                       </AccordionPanel>
                     </>
                   )}
                 </AccordionItem>
+                <Divider orientation="horizontal" width="100%" backgroundColor={'blackAlpha.900'} />
               </Accordion>
             </Box>
             {/* Paroduct Page */}
@@ -375,13 +385,13 @@ const VitaminNutrition = () => {
                     marginLeft: "25px",
                   }}
                 >
-                  {
-                    vitamins?.map((item, index) => (
-                      <ProductCard key={index} {...item} />
-                    ))}
+                  {vitamins?.map((item, index) => (
+                    <ProductCard key={index} {...item} />
+                  ))}
                 </div>
               )}
-              <Pagination currentPage={page} setPage={setPage} />
+              {/* <Pagination currentPage={page} totalPages={5}  /> */}
+              <Pagination page={page} setPage={setPage} />
             </Box>
           </Flex>
         </Container>

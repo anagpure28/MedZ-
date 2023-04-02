@@ -1,128 +1,313 @@
+import React from "react";
+import { useState } from "react";
+import CreditCard from "../Component/CreditCard.css"
+import { Button, Modal, ModalContent, ModalBody, ModalCloseButton, ModalFooter, ModalHeader, ModalOverlay, Text, background, useDisclosure } from "@chakra-ui/react";
 
-import React, { useState } from 'react';
-import "./CreditCard.css"
-export const CreditCard=() =>{
+const Card = () => {
+  const [show,setShow] = useState(false);
+  const [data, setData] = useState({
+    cardNumber: "",
+    cardHolder: "",
+    Month: "",
+    Year: "",
+    cvv: "",
+  });
+  console.log(show);
+  // add all the previous and current data in array
 
-  const [cardNumber, setCardNumber] = useState('################');
-  const [cardHolder, setCardHolder] = useState('full name');
-  const [expMonth, setExpMonth] = useState('mm');
-  const [expYear, setExpYear] = useState('yy');
-  const [cvv, setCvv] = useState('');
+  const [add, setAdd] = useState([]);
 
-  const handleCardNumberChange = (event) => {
-    setCardNumber(event.target.value);
-  }
+  // flip the ATM when CVV get focused
+  const [flip, setFlip] = useState(true);
 
-  const handleCardHolderChange = (event) => {
-    setCardHolder(event.target.value);
-  }
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
 
-  const handleExpMonthChange = (event) => {
-    setExpMonth(event.target.value);
-  }
+    setData({ ...data, [name]: value });
 
-  const handleExpYearChange = (event) => {
-    setExpYear(event.target.value);
-  }
+    if (data.cardNumber.length > 16) {
+      alert("Card Number Can't Be More Than 16 Digit");
+      setData({ ...data, cardNumber: data.cardNumber.slice(0, -1) });
+    }
+  };
 
-  const handleCvvChange = (event) => {
-    setCvv(event.target.value);
-  }
+  const handleValidation = () => {
+    if (data.cardNumber.length > 16) {
+      setData({ ...data, cardNumber: data.cardNumber.slice(0, -1) });
+    }
+  };
 
-  const handleCvvMouseEnter = () => {
-    document.querySelector('.front').style.transform = 'perspective(1000px) rotateY(-180deg)';
-    document.querySelector('.back').style.transform = 'perspective(1000px) rotateY(0deg)';
-  }
+  const handleClick = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
 
-  const handleCvvMouseLeave = () => {
-    document.querySelector('.front').style.transform = 'perspective(1000px) rotateY(0deg)';
-    document.querySelector('.back').style.transform = 'perspective(1000px) rotateY(180deg)';
-  }
+    setData({ ...data, [name]: value });
+  };
+
+  // render data on button click..
+
+  const Submit = () => {
+    // e.preventDefault();
+
+    setAdd(() => {
+      return [...add, data];
+    });
+
+    setData({
+      cardNumber: "",
+      cardHolder: "",
+      Month: "",
+      Year: "",
+      cvv: "",
+    });
+  };
+
+  function handleConfirm(e){
+    e.preventDefault();
+
+    if (
+      data.cardNumber.length === 16 &&
+      !isNaN(data.cardNumber) &&
+      data.cardHolder.length !== "" &&
+      isNaN(data.cardHolder) &&
+      data.cvv.length === 3 &&
+      !isNaN(data.cvv)
+    ) {
+      Submit();
+        alert("Payment Successfull");
+    } else {
+      alert("Invalid Credentails");
+    }
+  };
+
+  const handleFlip = () => {
+    setFlip(false);
+  };
+
+  const Flip = () => {
+    setFlip(true);
+  };
+
+  // let TotalData = localStorage.setItem("cart",JSON.stringify(cart));
+
+  // const OverlayOne = () => (
+  //   <ModalOverlay
+  //     bg="blackAlpha.300"
+  //     backdropFilter="blur(10px) hue-rotate(90deg)"
+  //   />
+  // );
+
+  // const { isOpen, onOpen, onClose } = useDisclosure();
+  // const [overlay, setOverlay] = React.useState(<OverlayOne />);
 
   return (
-    <div className="container">
-      <div className="card-container">
-        <div className="front">
-          <div className="image">
-            <img src="image/chip.png" alt="" />
-            <img src="image/visa.png" alt="" />
-          </div>
-          <div className="card-number-box">{cardNumber}</div>
-          <div className="flexbox">
-            <div className="box">
-              <span>card holder</span>
-              <div className="card-holder-name">{cardHolder}</div>
-            </div>
-            <div className="box">
-              <span>expires</span>
-              <div className="expiration">
-                <span className="exp-month">{expMonth}</span>
-                <span className="exp-year">{expYear}</span>
+    <div style={{display: "flex"}}>
+      <div className="cont-1">
+        <div className="container-fluid">
+          {flip ? (
+            <div className="ATM-Card">
+              <div className="logos">
+                <img
+                  className="logoOne"
+                  src="https://cdn-icons-png.flaticon.com/512/6404/6404100.png"
+                  alt="logo"
+                />
+
+                <img
+                  className="logoTwo"
+                  src="https://www.freepnglogos.com/uploads/visa-card-logo-9.png"
+                  alt="logoTwo"
+                />
+              </div>
+
+              <div className="card-number">
+                {data.cardNumber.length > 0 ? (
+                  <h1>{data.cardNumber}</h1>
+                ) : (
+                  <h1>**** **** **** ****</h1>
+                )}
+              </div>
+              <div className="card-info">
+                <div className="card-holder">
+                  <h5 style={{ fontWeight: "bold" }}>Card Holder</h5>
+                  {data.cardHolder.length > 0 ? (
+                    <h3>{data.cardHolder}</h3>
+                  ) : (
+                    <h3>***** *****</h3>
+                  )}
+                </div>
+
+                <div className="card-expiry">
+                  <h5 style={{ fontWeight: "bold" }}>Expiry Date</h5>
+                  {data.Month === "" && data.Year === "" ? (
+                    <h3>00/00</h3>
+                  ) : (
+                    <h3>
+                      {data.Month}/{data.Year}
+                    </h3>
+                  )}
+                </div>
               </div>
             </div>
+          ) : (
+            <div className="ATM-Card">
+              <div className="blackStrip"></div>
+              <div className="cvv">
+                <h3 className="cvv-number">{data.cvv}</h3>
+              </div>
+
+              <div className="info">
+                <p>
+                  CVV number is present on the back side of your card on the
+                  magnetic strip. It verifies that the card is physically
+                  available with the individual using it during the transaction.
+                  Debit and credit cards are mainly used for online transactions
+                  or for other virtual payment gateways.
+                </p>
+              </div>
+            </div>
+          )}
+
+          <div className="Main">
+            <form onSubmit={() => Submit}>
+              <div className="Form">
+                <label htmlFor="Card Number">Card Number</label>
+                <input
+                  type="number"
+                  autoComplete="off"
+                  placeholder="Enter Card Number"
+                  className="form-control"
+                  onChange={handleChange}
+                  value={data.cardNumber}
+                  name="cardNumber"
+                  maxLength="16"
+                  required
+                  id="num"
+                  onFocus={Flip}
+                  onKeyUp={handleValidation}
+                />
+                <br />
+                <label htmlFor="Card Holder">Card Holder</label>
+                <input
+                  type="text"
+                  autoComplete="off"
+                  placeholder="Card Holder"
+                  className="form-control"
+                  onChange={handleChange}
+                  value={data.cardHolder}
+                  name="cardHolder"
+                  required
+                  maxLength="17"
+                  onFocus={Flip}
+                />
+                <br />
+
+                <div className="ExpiryAndCVV">
+                  <div className="labels">
+                    <label htmlFor="Expiration">Expiration</label>
+                    <label htmlFor="CVV" className="CVV">
+                      Card CVV
+                    </label>
+                  </div>
+
+                  <div className="MYCVV">
+                    <select
+                      onClick={handleClick}
+                      name="Month"
+                      onFocus={Flip}
+                      required
+                    >
+                      <option disabled selected value="">
+                        Month
+                      </option>
+                      <option value="1">01</option>
+                      <option value="2">02</option>
+                      <option value="3">03</option>
+                      <option value="4">04</option>
+                      <option value="5">05</option>
+                      <option value="7">07</option>
+                      <option value="8">08</option>
+                      <option value="9">09</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                    </select>
+
+                    <select
+                      onClick={handleClick}
+                      name="Year"
+                      onFocus={Flip}
+                      required
+                    >
+                      <option disabled selected value="">
+                        Year
+                      </option>
+                      <option value="2023">2023</option>
+                      <option value="2024">2024</option>
+                      <option value="2025">2025</option>
+                      <option value="2026">2026</option>
+                      <option value="2027">2027</option>
+                      <option value="2028">2028</option>
+                      <option value="2029">2029</option>
+                      <option value="2030">2030</option>
+                    </select>
+
+                    <input
+                      id="CVV"
+                      type="text"
+                      maxLength="3"
+                      placeholder="Add CVV"
+                      onChange={handleChange}
+                      value={data.cvv}
+                      name="cvv"
+                      required
+                      onFocus={handleFlip}
+                    />
+                  </div>
+                </div>
+                <input
+                  type="submit"
+                  value="Pay"
+                  className="btn btn-success"
+                  id="btn"
+                  onClick={handleConfirm}
+                />
+                {/* <Button
+                onClick={(e) => {
+                  setOverlay(<OverlayOne />);
+                handleConfirm(e)
+                setShow(true)
+                onOpen() ;
+                } }
+              >
+                Pay
+              </Button>
+              <Modal isCentered isOpen={isOpen} onClose={onClose}>
+                {overlay}
+                <ModalContent>
+                  <ModalHeader>Modal Title</ModalHeader>
+                  <ModalCloseButton />
+                  <ModalBody>
+                    <Text>Custom backdrop filters!</Text>
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button onClick={onClose}>Close</Button>
+                  </ModalFooter>
+                </ModalContent>
+              </Modal> */}
+              </div>
+            </form>
           </div>
-        </div>
-        <div className="back">
-          <div className="stripe"></div>
-          <div className="box">
-            <span>cvv</span>
-            <div className="cvv-box">{cvv}</div>
-            <img src="image/visa.png" alt="" />
-          </div>
-        </div>
+        </div>             
       </div>
-      <form>
-        <div className="inputBox">
-          <span>card number</span>
-          <input type="text" maxLength="16" className="card-number-input" onChange={handleCardNumberChange} />
-        </div>
-        <div className="inputBox">
-          <span>card holder</span>
-          <input type="text" className="card-holder-input" onChange={handleCardHolderChange} />
-        </div>
-        <div className="flexbox">
-          <div className="inputBox">
-            <span>expiration mm</span>
-            <select name="" id="" className="month-input" onChange={handleExpMonthChange}>
-              <option value="month" selected disabled>month</option>
-              
-                   <option value="01">01</option>
-                    <option value="02">02</option>
-                    <option value="03">03</option>
-                    <option value="04">04</option>
-                    <option value="05">05</option>
-                    <option value="06">06</option>
-                    <option value="07">07</option>
-                    <option value="08">08</option>
-                    <option value="09">09</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                </select>
-            </div>
-            <div className="inputBox">
-                <span>expiration yy</span>
-                <select name="" id="" className="year-input">
-                    <option value="year" selected disabled>year</option>
-                    <option value="2021">2021</option>
-                    <option value="2022">2022</option>
-                    <option value="2023">2023</option>
-                    <option value="2024">2024</option>
-                    <option value="2025">2025</option>
-                    <option value="2026">2026</option>
-                    <option value="2027">2027</option>
-                    <option value="2028">2028</option>
-                    <option value="2029">2029</option>
-                    <option value="2030">2030</option>
-                </select>
-            </div>
-            <div className="inputBox">
-                <span>cvv</span>
-                <input type="text" maxLength="4" className="cvv-input" />
-            </div>
-        </div>
-        <input type="submit" value="submit" className="submit-btn" />
-    </form>
-</div>
-);
-  }
+      <div className="cont-2">
+          <div className="data-container">
+              <p>Total Data: </p>
+          </div>
+      </div>
+    </div>
+  );
+};
+
+export default Card;
