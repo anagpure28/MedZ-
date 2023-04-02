@@ -25,6 +25,8 @@ import ProductCard from "../Component/ProductCard";
 import { useLocation, useSearchParams } from "react-router-dom";
 import PageNotfound from "./PageNotfound";
 import Pagination from "../Component/Pagination";
+import styles from "./MediaQuery.module.css"
+
 const VitaminNutrition = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialBrand = searchParams.getAll("brand");
@@ -108,16 +110,11 @@ const VitaminNutrition = () => {
           color="#262626"
           bgColor={"#edeeee"}
           marginTop={"5px"}
-        >
+          
+        >          
           <Flex>
             <Box
-              width={"25%"}
-              // border={"1px solid gray"}
-              bgColor={"white"}
-              textAlign={"left"}
-              padding={"15px"}
-              height={"50%"}
-              marginTop={"10px"}
+              className={styles.sideBarScreen}
             >
               <Text marginLeft={"15px"} fontWeight={"bold"} fontSize={"14px"}>
                 FILTERS
@@ -377,13 +374,14 @@ const VitaminNutrition = () => {
                 <PageNotfound />
               ) : (
                 <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(3,1fr)",
-                    gap: "15px",
-                    padding: "20px",
-                    marginLeft: "25px",
-                  }}
+                  // style={{
+                  //   display: "grid",
+                  //   gridTemplateColumns: "repeat(3,1fr)",
+                  //   gap: "15px",
+                  //   padding: "20px",
+                  //   marginLeft: "25px",
+                  // }}
+                  className={styles.displaygrid}
                 >
                   {vitamins?.map((item, index) => (
                     <ProductCard key={index} {...item} />

@@ -49,11 +49,12 @@ export function SingleProduct() {
       }
     });
     if (DuplicateData) {
-      alert("Product already exist");
+      alert("Product already exists");
       return;
     }
     let newCard = [...cartData, { ...product, quantity: 1 }];
     localStorage.setItem("cart", JSON.stringify(newCard));
+    alert("Product added to the cart!!!")
   };
 
   useEffect(() => {
@@ -104,7 +105,7 @@ export function SingleProduct() {
                   display={"flex"}
                   alignItems={"center"}
                   gap={"10px"}
-                  pt={1}
+                  // pt={1}
                 >
                   <Box>{product?.rating} ★</Box>
                   <Text fontSize={"1rem"}>{`${
@@ -112,7 +113,7 @@ export function SingleProduct() {
                   } ratings`}</Text>
                 </Box>
 
-                <List spacing={2} pt={1}>
+                <List>
                   <ListItem>
                     <Text
                       as={"span"}
@@ -139,7 +140,7 @@ export function SingleProduct() {
                   color={useColorModeValue("yellow.500", "yellow.300")}
                   fontWeight={"500"}
                   
-                  mb={"4"}
+                  // mb={"2"}
                 >
                   Product Description
                 </Text>
@@ -152,7 +153,7 @@ export function SingleProduct() {
                   color={useColorModeValue("yellow.500", "yellow.300")}
                   fontWeight={"500"}
                   
-                  mb={"4"}
+                  mb={"1"}
                 >
                   Product Delivery
                 </Text>
@@ -224,12 +225,12 @@ export function SingleProduct() {
                     color={useColorModeValue("yellow.500", "yellow.300")}
                     fontWeight={"500"}
                     
-                    mb={"4"}
+                    mb={"1"}
                   >
                     Product Details
                   </Text>
 
-                  <List spacing={2}>
+                  <List spacing={1}>
                     <ListItem>
                       <Text as={"span"} fontWeight={"bold"}>
                         Available:
@@ -260,10 +261,10 @@ export function SingleProduct() {
             <Button
               rounded={"none"}
               w={"full"}
-              mt={8}
+              mt={1}
               size={"lg"}
-              py={"7"}
-              bg={useColorModeValue("gray.900", "gray.50")}
+              py={"1"}
+              bgGradient="linear(to-r, pink.400, orange.400)"
               color={useColorModeValue("white", "gray.900")}
               
               _hover={{

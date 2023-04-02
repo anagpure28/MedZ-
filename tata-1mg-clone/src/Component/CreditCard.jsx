@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import CreditCard from "../Component/CreditCard.css"
 import { Button, Modal, ModalContent, ModalBody, ModalCloseButton, ModalFooter, ModalHeader, ModalOverlay, Text, background, useDisclosure } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import {EmptyCart} from "../Component/EmptyCart";
 
 const Card = () => {
   const [show,setShow] = useState(false);
@@ -20,11 +22,27 @@ const Card = () => {
   // flip the ATM when CVV get focused
   const [flip, setFlip] = useState(true);
 
+  const [cartData, setCartData] = useState([])
+  const navigate = useNavigate();
+
+  useEffect(()=> {
+    let Data = JSON.parse(localStorage.getItem("cart")) || [];
+    setCartData(Data)
+  },[])
+
+  function totalPrice(){
+    let total = 0;
+    for(let i=0;i<=cartData.length-1; i++){
+      total += cartData[i].discountprice*cartData[i].quantity;
+    }
+    return total;
+  }
+
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
 
-    setData({ ...data, [name]: value });
+    setData({ ...data, [name]: value })
 
     if (data.cardNumber.length > 16) {
       alert("Card Number Can't Be More Than 16 Digit");
@@ -76,6 +94,11 @@ const Card = () => {
     ) {
       Submit();
         alert("Payment Successfull");
+        // setCartData([])
+        localStorage.setItem("cart", JSON.stringify([]));
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
     } else {
       alert("Invalid Credentails");
     }
@@ -89,18 +112,11 @@ const Card = () => {
     setFlip(true);
   };
 
-  // let TotalData = localStorage.setItem("cart",JSON.stringify(cart));
-
-  // const OverlayOne = () => (
-  //   <ModalOverlay
-  //     bg="blackAlpha.300"
-  //     backdropFilter="blur(10px) hue-rotate(90deg)"
-  //   />
-  // );
-
-  // const { isOpen, onOpen, onClose } = useDisclosure();
-  // const [overlay, setOverlay] = React.useState(<OverlayOne />);
-
+  if(cartData.length===0){
+    return <>
+    <EmptyCart/>
+    </>
+  }else{
   return (
     <div style={{display: "flex"}}>
       <div className="cont-1">
@@ -269,33 +285,9 @@ const Card = () => {
                 <input
                   type="submit"
                   value="Pay"
-                  className="btn btn-success"
-                  id="btn"
+                  className="btnPayment btn-success"
                   onClick={handleConfirm}
                 />
-                {/* <Button
-                onClick={(e) => {
-                  setOverlay(<OverlayOne />);
-                handleConfirm(e)
-                setShow(true)
-                onOpen() ;
-                } }
-              >
-                Pay
-              </Button>
-              <Modal isCentered isOpen={isOpen} onClose={onClose}>
-                {overlay}
-                <ModalContent>
-                  <ModalHeader>Modal Title</ModalHeader>
-                  <ModalCloseButton />
-                  <ModalBody>
-                    <Text>Custom backdrop filters!</Text>
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button onClick={onClose}>Close</Button>
-                  </ModalFooter>
-                </ModalContent>
-              </Modal> */}
               </div>
             </form>
           </div>
@@ -303,11 +295,19 @@ const Card = () => {
       </div>
       <div className="cont-2">
           <div className="data-container">
-              <p>Total Data: </p>
+            <div className="headingCont">
+                <p>Total Price</p>
+            </div>
+            <div className="bodyCont">
+                <img src="https://cdn.dribbble.com/users/329319/screenshots/2140009/day-004---credit-card-payment.gif" alt="" />
+            </div>
+            <div className="lastCont">
+            <p><span>Price to pay:</span> ₹{totalPrice()}</p>
+            </div>
           </div>
       </div>
     </div>
   );
 };
-
+};
 export default Card;
