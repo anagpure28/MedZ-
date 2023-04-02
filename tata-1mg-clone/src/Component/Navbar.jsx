@@ -130,17 +130,21 @@ export default function Navbar() {
               >
                 CARE PLANE
               </Text>
-              <div style={{ marginLeft: "150px" }}>
-                <Center height="50px">
-                  <Link to={'/login'}>Login</Link>
-                  <Divider
-                    orientation="vertical"
-                    height={"20px"}
-                    margin={"10px"}
-                    bgColor={"blackAlpha.900"}
-                  />
-                  <Link to={'/signup'}>Sign Up</Link>
-                </Center>
+
+              <div style={{ marginLeft: "100px" }}>
+                  <Center height="50px">
+                    <Link to={"/login"}>Login</Link>
+                    <Divider
+                      orientation="vertical"
+                      height={"20px"}
+                      margin={"10px"}
+                      bgColor={"blackAlpha.900"}
+                    />
+                    <Link to={"/signup"}>Sign Up</Link>
+                  </Center>
+                  <Text>
+                    
+                  </Text>
               </div>
               <Text
                 transform="scale(1.0)"
@@ -163,7 +167,10 @@ export default function Navbar() {
               color: "black",
             }}
           >
-           <Link to="/cart"> <BsCart3 style={{ fontSize: "25px" }} /></Link>
+            <Link to="/cart">
+              {" "}
+              <BsCart3 style={{ fontSize: "25px" }} />
+            </Link>
             <Text
               fontWeight={"bold"}
               transform="scale(1.0)"
@@ -193,14 +200,14 @@ export default function Navbar() {
               ))}
               <div style={{ marginLeft: "150px" }}>
                 <Center height="50px">
-                  <Link to={'/login'}>Login</Link>
+                  <Link to={"/login"}>Login</Link>
                   <Divider
                     orientation="vertical"
                     height={"20px"}
                     margin={"10px"}
                     bgColor={"blackAlpha.900"}
                   />
-                  <Link to={'/signup'}>Sign Up</Link>
+                  <Link to={"/signup"}>Sign Up</Link>
                 </Center>
               </div>
             </Stack>
@@ -304,7 +311,7 @@ export default function Navbar() {
       </div>
       <HStack
         as={"nav"}
-        spacing={4}
+        spacing={2}
         display={{ base: "none", md: "flex" }}
         justifyContent={"center"}
         maxW={"100%"}
@@ -316,8 +323,18 @@ export default function Navbar() {
           <NavLink
             style={({ isActive }) => {
               return isActive
-                ? { display: "flex", alignItems: "center", color: "#ff6f61" }
-                : { display: "flex", alignItems: "center", color: "black" };
+                ? {
+                    display: "flex",
+                    alignItems: "center",
+                    color: "#ff6f61",
+                    fontSize: "16px",
+                  }
+                : {
+                    display: "flex",
+                    alignItems: "center",
+                    color: "black",
+                    fontSize: "16px",
+                  };
             }}
             to={link.path}
             key={link.path}

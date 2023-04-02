@@ -1,7 +1,30 @@
-button{
-    border-radius: 20px;
-    color: #FF6f61;
-    padding:2px !important;
+#btn{
+    background-color: #FF6f61;
+    border-radius: 50%;
+    color: white;
+    padding:11px 7px !important;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+#btn:hover{
+    background-color: rgb(159, 233, 22);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+#btn:focus{
+    background-color: #FF6f61;
+}
+#btn1{
+    background-color: #FF6f61;
+    border-radius: 50%;
+    color: white;
+    padding:11px 20px !important;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+#btn1:hover{
+    background-color: rgb(159, 233, 22);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+#btn1:focus{
+    background-color: #FF6f61;
 }
 
 @media screen and (max-width:620px) {

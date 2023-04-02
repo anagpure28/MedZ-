@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     Button,
     FormControl,
@@ -11,10 +11,17 @@ import {
     Th,
     Thead,
     Tr,
-    Text
+    Text,
+    Alert,
+    AlertIcon,
+    Box
 } from '@chakra-ui/react';
 import styled from '@emotion/styled';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { DeleteIcon, ExternalLinkIcon } from "@chakra-ui/icons"
+import { deletedata, postdata } from '../../Redux/AdminCRUD/action';
+import { Vitamin } from '../../Redux/AdminAlldataReducer/action';
+import { Link } from 'react-router-dom';
 
 const initialProductFormData = {
     title: '',
@@ -27,43 +34,73 @@ const initialProductFormData = {
 };
 
 const AdminPanel = () => {
+    const dispatch = useDispatch()
     const [productFormData, setProductFormData] = useState(initialProductFormData);
-    const [products, setProducts] = useState([]);
+    const { AdminAlldataReducer, AdminUserData } = useSelector((state) => { return state })
+    const { vitamin, ayurveda, teststrip, supliment } = AdminAlldataReducer;
+    const [flag, setflag] = useState(false)
+    const [deleteflag, setdeletefalg] = useState(false)
+    const [addflag, setaddflag] = useState(false)
+    const [page, setpage] = useState(1)
     const handleProductInputChange = (event) => {
         const { name, value } = event.target;
-        console.log(productFormData)
-        setProductFormData((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
+        // let data = name=="images"?[...value] : value
+
+        setProductFormData({ ...productFormData, [name]: value })
+
+        //   setProductFormData([name]:data);
+
     };
 
+
+
+    // console.log(productFormData)
 
     const handleAddProduct = (event) => {
-        event.preventDefault();
-        // Perform API call to create a new product
-        setProducts([...products, productFormData]);
-
+        event.preventDefault(); // Perform API call to create a new product
+        dispatch(postdata(productFormData))
+            .then(() => {
+                dispatch(Vitamin)
+                
+            })
+            alert("item added successfully")
+        setProductFormData(initialProductFormData)
+        // setProducts([...products, productFormData])
     };
 
+
     const handleDeleteProduct = (index) => {
-        // Perform API call to delete the product at index
-        setProducts(products.filter((product, i) => i !== index));
+        console.log(index)
+        dispatch(deletedata(index))
+            .then(() => {
+                dispatch(Vitamin)
+               
+            })
+            alert("item removed successfully")
     };
 
     const handleEditProduct = (index) => {
+        setflag(true)
+        const filterdata = vitamin.filter((item, i) => {
+            return item.id == index
+        })
+        console.log(filterdata)
+        setProductFormData({ ...filterdata[0] })
         // Perform API call to delete the product at index
-        setProducts(products.filter((product, i) => i !== index));
+        // setProducts(products.filter((product, i) => i !== index));
     };
 
+    console.log(vitamin.length)
+
     return (
-        <Stack m={"auto"} mt={"15px"} w={"80%"} spacing={8}>
+        <Stack m={"auto"} mt={"15px"} w={"80%"} >
             <Text style={{ fontWeight: "bolder", fontSize: "35px" }}>Add A Product</Text>
             <FORM onSubmit={handleAddProduct}>
                 <DIV>
                     <FormControl id="title">
                         <FormLabel> Name</FormLabel>
                         <Input
+                            border={"1px dotted black"}
                             type="text"
                             name="title"
                             value={productFormData.title}
@@ -73,6 +110,7 @@ const AdminPanel = () => {
                     <FormControl id="price">
                         <FormLabel>Price</FormLabel>
                         <Input
+                            border={"1px dotted black"}
                             type="number"
                             name="price"
                             value={productFormData.price}
@@ -83,6 +121,7 @@ const AdminPanel = () => {
                     <FormControl id="brand">
                         <FormLabel>brand</FormLabel>
                         <Input
+                            border={"1px dotted black"}
                             type="text"
                             name="brand"
                             value={productFormData.brand}
@@ -92,6 +131,7 @@ const AdminPanel = () => {
                     <FormControl id="discountprice">
                         <FormLabel>Discount Price</FormLabel>
                         <Input
+                            border={"1px dotted black"}
                             type="text"
                             name="discountprice"
                             value={productFormData.discountprice}
@@ -102,6 +142,7 @@ const AdminPanel = () => {
                     <FormControl id="category">
                         <FormLabel>Category</FormLabel>
                         <Input
+                            border={"1px dotted black"}
                             type="text"
                             name="category"
                             value={productFormData.category}
@@ -113,6 +154,7 @@ const AdminPanel = () => {
                     <FormControl id="ratings">
                         <FormLabel>Ratings</FormLabel>
                         <Input
+                            border={"1px dotted black"}
                             type="number"
                             name="ratings"
                             value={productFormData.ratings}
@@ -123,6 +165,7 @@ const AdminPanel = () => {
                     <FormControl id="images">
                         <FormLabel>Image</FormLabel>
                         <Input
+                            border={"1px dotted black"}
                             type="text"
                             name="images"
                             value={productFormData.images}
@@ -133,6 +176,7 @@ const AdminPanel = () => {
                     <FormControl id="desc">
                         <FormLabel>Discription</FormLabel>
                         <Input
+                            border={"1px dotted black"}
                             type="text"
                             name="desc"
                             value={productFormData.desc}
@@ -140,30 +184,53 @@ const AdminPanel = () => {
                         />
                     </FormControl>
                 </DIV>
-                <Button style={{marginTop:"20px", width:"300px" , backgroundColor:"#FF6F61",color:"white"}} type="submit">Add Product</Button>
+                <Button style={{ marginTop: "20px", width: "300px", backgroundColor: "#FF6F61", color: "white" }} type="submit">Add Product</Button>
             </FORM>
             <Table>
                 <Thead>
                     <Tr>
+                        <Th>Product Image</Th>
                         <Th>Product Name</Th>
+                        <Th>Brand</Th>
+                        <Th>Category</Th>
                         <Th>Price</Th>
-                        <Th></Th>
+                        <Th>Discount</Th>
+                        <Th>Edit</Th>
+                        <Th>Delete</Th>
+
                     </Tr>
                 </Thead>
                 <Tbody>
-                    {products.map((product, index) => (
+                    {vitamin.length > 0 && vitamin.map((product, index) => (
+
                         <Tr key={index}>
-                            <Td>{product.name}</Td>
-                            <Td>${product.price}</Td>
+                            <Td><img src={product?.images || product?.images[0]} alt="" /></Td>
+                            <Td>{product.title} </Td>
+                            <Td>{product.brand} </Td>
+                            <Td> {product.category}</Td>
+                            <Td> {product.price}</Td>
+                            <Td> {`₹ ${product.discountprice}`}</Td>
                             <Td>
-                                <Button bg={'#FF6F61'} color={"white"} onClick={() => handleDeleteProduct(index)}>
-                                    Delete
-                                </Button>
+                                <Link to={`/dashboard/singleproductedit/${product.id}`}><button onClick={() => handleEditProduct(product.id)}>
+                                    <ExternalLinkIcon boxSize={6} />
+                                </button>
+                                </Link>
                             </Td>
+                            <Td>
+                                <button onClick={() => handleDeleteProduct(product.id)}>
+                                    <DeleteIcon boxSize={6} />
+                                </button>
+                            </Td>
+
                         </Tr>
                     ))}
                 </Tbody>
             </Table>
+            {/* <Box display={'flex'} margin={"auto"} textAlign={"center"}>
+                <Button style={{ display:"block", margin: "10px 10px", width: "300px", backgroundColor: "#FF6F61", color: "white" }} disabled={page == 1} onClick={() => setpage(page - 1)}>Prev</Button>
+                <Button disabled style={{display:"block", margin: "10px 10px", border:"1px dotted #FF6F61", width: "100px", backgroundColor: "white", color: "grey" }} >{page}</Button>
+                <Button style={{ display:"block",margin: "10px 10px", width: "300px", backgroundColor: "#FF6F61", color: "white" }} onClick={() => setpage(page + 1)}>Next</Button>
+            </Box> */}
         </Stack>
     );
 };

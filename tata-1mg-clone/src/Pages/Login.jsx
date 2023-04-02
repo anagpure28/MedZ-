@@ -6,67 +6,89 @@ import {
   Input,
   Checkbox,
   Stack,
-  Link,
   Button,
   Image,
   useToast,
 } from "@chakra-ui/react";
+import { Link, Navigate } from "react-router-dom";
 import Navbar from "../Component/Navbar";
 import Footer from "./Footer";
 import Logo from "../Component/Logo/New_Logo.png";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { userLogin } from "../Redux/AuthReducer/action";
 import { useLocation, useNavigate } from "react-router-dom";
+import { UserDataLogin } from "../Api/ApiCalls";
 export function Login() {
   const toast = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const location = useLocation();
+  const [redirect, setRedirect] = useState(false);
   const navigate = useNavigate();
-  const { user,isAuth } = useSelector((store) => {
+  const [newuserdata, setnewuserdata] = useState([])
+  const { user } = useSelector((store) => {
     return {
       user: store.authReducer.users,
-      isAuth : store.authReducer.isAuth
+      isAuth: store.authReducer.isAuth,
     };
   });
-  console.log(isAuth);
+
+
+
   const handleLogin = (e) => {
-    e.preventDefault();
-    dispatch(userLogin).then(()=>{
     let flag = false;
-    for (let i = 0; i < user.length; i++) {
-      if (user[i].email === email && user[i].password === password) {
+    e.preventDefault();
+    setRedirect(true);
+    console.log(newuserdata)
+    for (let i = 0; i < newuserdata.length; i++) {
+      if (newuserdata[i].email === email && newuserdata[i].password === password) {
+        localStorage.setItem('user', newuserdata[i].firstname + " " + newuserdata[i].lastname);
         flag = true;
         break;
       }
     }
-    if (flag) {
+
+    // console.log("flag",flag)
+   if (flag) {
+      dispatch(userLogin);
       toast({
-        title: "Logged In 👍.",
-        description: "Login Successfully!",
-        status: "success",
-        duration: 2000,
-        isClosable: true,
-      });
-      navigate(location.state,{replace : true})
-    } else {
-      toast({
-        title: "Login Failed 🙏.",
-        description: "Invalid email and password!",
-        status: "error",
-        duration: 2000,
-        isClosable: true,
-      });
+          title: "Logged In 👍.",
+          description: "Login Successfully!",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+        });
+        navigate(location.state, { replace: true });
+      }else{
+
+        toast({
+          title: "Login Failed 🙏.",
+          description: "Invalid email and password!",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
     }
     setEmail("");
-    setPassword("");
-    })
-  };
-  // useEffect(() => {
-  //   dispatch(userLogin);
-  // }, []);
+    setPassword("")
+  }
+    
+
+  useEffect(() => {
+
+    UserDataLogin()
+      .then((res) => setnewuserdata(res.data))
+
+  }, []);
+
+
+  // Redirect to home page
+  if (redirect) {
+    return <Navigate to={"/"} />;
+  }
+
   return (
     <>
       <Navbar />
@@ -115,11 +137,19 @@ export function Login() {
               <Stack spacing={10}>
                 <Stack
                   direction={{ base: "column", sm: "row" }}
-                  align={"start"}
-                  justify={"space-between"}
+                  align={"center"}
+                  justify={"space-around"}
                 >
                   <Checkbox color={"black"}>Remember me</Checkbox>
-                  <Link color={"blue.400"}>Forgot password?</Link>
+                  <Link style={{ color: "blue", fontSize: "15px" }}>
+                    Forgot password?
+                  </Link>
+                  <Link
+                    style={{ color: "blue", fontSize: "15px" }}
+                    to={"/signup"}
+                  >
+                    Sign Up
+                  </Link>
                 </Stack>
                 <Button
                   onClick={handleLogin}

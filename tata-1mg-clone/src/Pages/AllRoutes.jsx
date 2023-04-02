@@ -25,6 +25,8 @@ import Allproduct from '../Admin/Pages/Allproduct'
 import Editproudct from '../Admin/Pages/Editproudct'
 import Signup from './Signup'
 import Cart from './Cart'
+import Singleprodcutedit from '../Admin/Pages/Singleprodcutedit'
+import About from './About'
 
 function AllRoutes() {
   return (
@@ -32,29 +34,30 @@ function AllRoutes() {
         <Route path="/" element={<Homepage />}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/login" element={<Login/>}/>
-        <Route path="/payment" element={<Payment />}/>
+        <Route path="/payment" element={<Privateroute><Payment /></Privateroute>}/>
         <Route path="/products" element={<Products />}/>
         <Route path="/products/:id" element={<SingleProduct />}/>
         <Route path="*" element={<PageNotfound />}/>
+        <Route path='/about' element={<About/>}/>
         {/* Admin */}
         <Route path='/adminlogin' element={<AdminLogin />}/> 
-        <Route path='/dashboard' element={ <Dashboard />}/> 
-        <Route path='/dashboard/userdetails' element={ <Userdetails />}/>
-        <Route path='/dashboard/editproduct' element={ <Editproudct />}/>
+        <Route path='/dashboard' element={  <Dashboard />}/> 
+        <Route path='/dashboard/userdetails' element={<AdminPrivateroute> <Userdetails /></AdminPrivateroute>}/>
+        <Route path='/dashboard/editproduct' element={<AdminPrivateroute> <Editproudct /></AdminPrivateroute>}/>
         <Route path='/dashboard/allproducts' element={<AdminPrivateroute> <Allproduct /></AdminPrivateroute>}/>
-
+        <Route path='/dashboard/singleproductedit/:id' element={<AdminPrivateroute><Singleprodcutedit /></AdminPrivateroute>} />
 
         {/* Admin */}
         {/*  */}
-         <Route path='/health-resource' element={<HealthResource/>}/>
+         <Route path='/health-resource' element={<VitaminNutrition/>}/>
         <Route path='/vitamin-nutritiion' element={<VitaminNutrition/>}/>
         <Route path='/diabetes' element={<Diabetes/>}/>
         <Route path='/health-device' element={<HealthcareDevice/>}/>
         <Route path='/personal-care' element={<PersonalCare/>}/>
-        <Route path='/health-condition' element={<HealthCondition/>}/>
+        <Route path='/health-condition' element={<HealthcareDevice/>}/>
         <Route path='/ayurveda-products' element={<AyurvedaProducts/>}/>
-        <Route path='/homeopathy' element={<Homeopathy/>}/>
-        <Route path='/featured' element={<Featured/>}/>
+        <Route path='/homeopathy' element={<PersonalCare/>}/>
+        <Route path='/featured' element={<AyurvedaProducts/>}/>
         <Route path="/:category/:id" element={<SingleProduct/>}/>
         <Route path="/cart" element={<Cart/>}/>
          {/*Route for category-wise single product page*/}

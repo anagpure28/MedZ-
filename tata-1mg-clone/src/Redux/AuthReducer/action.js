@@ -22,7 +22,7 @@ export const CreateUser = (data) => (dispatch) => {
 
 export const userLogin = (dispatch) => {
   dispatch({ type: LOGIN_REQUEST });
-  return axios
+  axios
     .get(`https://639b03f6d514150197480eef.mockapi.io/user/users`)
     .then((res) => {
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });

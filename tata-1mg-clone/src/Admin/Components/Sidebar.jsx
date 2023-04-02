@@ -109,7 +109,6 @@ const SidebarContent = ({ onClose, ...rest }) => {
 
 const NavItem = ({ icon, children, ...rest }) => {
     return (
-        <Link href="#" style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
             <Flex
                 align="center"
                 p="4"
@@ -134,7 +133,6 @@ const NavItem = ({ icon, children, ...rest }) => {
                 )}
                 {children}               
             </Flex>
-        </Link>
     );
 };
 
