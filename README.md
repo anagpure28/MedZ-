@@ -9,22 +9,22 @@ Original Website Link: "https://www.1mg.com/"
 
 Deployed Link of project: "https://medzplus.vercel.app/"
 
-                                                    Landing Page
+                                                                  Landing Page
 ![front](https://user-images.githubusercontent.com/92313981/229344642-4c85116c-375c-4969-9814-23e0fca3cacd.png)
 
-                                                    Product Page
+                                                                  Product Page
 ![image](https://user-images.githubusercontent.com/92313981/229344844-939da59b-dfdf-4c84-b487-fc2aa8c573c3.png)
 
-                                                    Single Product Page
+                                                                  Single Product Page
 ![image](https://user-images.githubusercontent.com/92313981/229345297-00006472-cbd8-47eb-bb50-6f6a21de8df6.png)
 
-                                                    Cart Page
+                                                                  Cart Page
 ![image](https://user-images.githubusercontent.com/92313981/229345247-5bc0f245-5b6c-4863-b6b3-38ff8bbb6208.png)
 
-                                                    Payment Page
+                                                                  Payment Page
  ![image](https://user-images.githubusercontent.com/92313981/229368464-56cf9e64-f9ea-4c97-a3b3-4b5781b0c264.png)
  
-                                                    Developers
+                                                                  Developers
  ![WhatsApp Image 2023-04-02 at 22 55 26](https://user-images.githubusercontent.com/92313981/229374201-6f143cf0-33a0-4d9e-8440-cef0f164d720.jpg)
 
 Functionality
