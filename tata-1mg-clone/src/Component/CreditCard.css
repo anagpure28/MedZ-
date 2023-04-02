@@ -1,171 +1,228 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 
-*{
-    font-family: 'Poppins', sans-serif;
-    margin:0; padding:0;
-    box-sizing: border-box;
-    outline: none; border: none;
-    text-decoration: none;
-    text-transform: uppercase;
-}
-
-.container{
-    min-height: 100vh;
-    background: #eee;
+  .cont-1{
+    border: 1px solid black;
+    width: 50%;
+  }
+  .cont-2{
+    border: 1px solid black;
+    width: 50%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    flex-flow: column;
-    padding-bottom: 60px;
-}
+    align-items: center;
+  }
 
-.container form{
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 10px 15px rgba(0,0,0,.1);
-    padding: 20px;
-    width: 600px;
-    padding-top: 160px;
-}
-
-.container form .inputBox{
-    margin-top: 20px;
-}
-
-.container form .inputBox span{
-    display: block;
-    color:#999;
-    padding-bottom: 5px;
-}
-
-.container form .inputBox input,
-.container form .inputBox select{
-    width: 100%;
-    padding: 10px;
-    border-radius: 10px;
-    border:1px solid rgba(0,0,0,.3);
-    color:#444;
-}
-
-.container form .flexbox{
+  .data-container{
+    border: 1px solid black;
+    width: 50%;
+  }
+  
+  .container-fluid {
+    float: right;
     display: flex;
-    gap:15px;
-}
-
-.container form .flexbox .inputBox{
-    flex:1 1 150px;
-}
-
-.container form .submit-btn{
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+    flex-direction: column;
+    width: 500px;
+    padding: 20px;
+  }
+  
+  .Main {
+    /* border: 1px solid red; */
+    /* background-color: #ffffff; */
+    margin-bottom: 20px;
+    border-radius: 20px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
     width: 100%;
-    background:linear-gradient(45deg, blueviolet, deeppink);
+    padding-top: 20px;
+    background-image: url(https://img.freepik.com/premium-photo/copy-space-abstract-blur-pastel-violet-with-orange-texture-background_66899-2357.jpg);
+  }
+  .ATM-Card {
+    /* border: 1px solid red; */
+    width: 80%;
+    /* height: 210px; */
+    box-shadow: 9px 9px 9px #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: "red";
+    background-image: url(https://img.freepik.com/premium-photo/copy-space-abstract-blur-pastel-violet-with-orange-texture-background_66899-2357.jpg);
     margin-top: 20px;
-    padding: 10px;
-    font-size: 20px;
-    color:#fff;
+    border-radius: 10px;
+    /* box-shadow: 9px 9px 9px gray; */
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    border-radius: 7px;
+    height: 35px;
+    font-weight: bold;
+  }
+  input {
+    text-align: center;
+    font-weight: bold;
+  }
+  #CVV {
+    border-radius: 7px;
+    height: 35px;
+    width: 100px;
+  }
+  
+  input::placeholder {
+    font-weight: bold;
+    opacity: 1;
+  }
+  
+  label {
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  select {
+    font-weight: bold;
+    height: 35px;
+    border-radius: 7px;
+    margin: 5px;
+  }
+  option {
+    font-weight: bold;
+  }
+  input[type="submit"] {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 100%;
+    font-weight: bold;
+  }
+  .logoOne {
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+  }
+  
+  .logoTwo {
+    width: 90px;
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  .logos {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+  .card-number {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: flex-end;
+  }
+  
+  .card-number > h1 {
+    font-style: italic;
+    width: 80%;
+    font-size: 22px;
+    padding-left: 20px;
+  }
+  .card-info {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+    /* font-family: "Shantell Sans", cursive; */
+    padding: 0px 10px 10px 10px;
+  }
+  
+  .card-holder {
+    width: 60%;
+    text-align: left;
+    /* border: 1px solid black; */
+  }
+  
+  /* .card-expiry > h3 {
+    padding-left: 20px;
+  } */
+  .cvv {
+    background-color: #ffffff;
+    width: 90%;
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 5%;
+    border-radius: 5px;
+  }
+  .blackStrip {
+    background-color: black;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+  
+  .cvv > h3 {
+    padding-right: 10px;
+    padding-top: 5px;
+    font-weight: bold;
+    font-family: "Shantell Sans", cursive;
+  }
+  .info > p {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .table > tbody {
+    font-weight: 500;
+  }
+  
+  .Form {
+    display: flex;
+    flex-direction: column;
+    width: 325px;
+    border-radius: 5px;
+  }
+  .ExpiryAndCVV {
+    width: 100%;
+  }
+  .labels {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 24px 0 18px;  
+    width: 100%;
+  }
+  .MYCVV {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+  }
+  .btn{
+    height: 35px;
     border-radius: 10px;
     cursor: pointer;
-    transition: .2s linear;
-}
-
-.container form .submit-btn:hover{
-    letter-spacing: 2px;
-    opacity: .8;
-}
-
-.container .card-container{
-    margin-bottom: -150px;
-    position: relative;
-    height: 250px;
-    width: 400px;
-}
-
-.container .card-container .front{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0; left: 0;
-    background:linear-gradient(45deg, blueviolet, deeppink);
-    border-radius: 5px;
-    backface-visibility: hidden;
-    box-shadow: 0 15px 25px rgba(0,0,0,.2);
-    padding:20px;
-    transform:perspective(1000px) rotateY(0deg);
-    transition:transform .4s ease-out;
-}
-
-.container .card-container .front .image{
-    display: flex;
-    align-items:center;
-    justify-content: space-between;
-    padding-top: 10px;
-}
-
-.container .card-container .front .image img{
-    height: 50px;
-}
-
-.container .card-container .front .card-number-box{
-    padding:30px 0;
-    font-size: 22px;
-    color:#fff;
-}
-
-.container .card-container .front .flexbox{
-    display: flex;
-}
-
-.container .card-container .front .flexbox .box:nth-child(1){
-    margin-right: auto;
-}
-
-.container .card-container .front .flexbox .box{
-    font-size: 15px;
-    color:#fff;
-}
-
-.container .card-container .back{
-    position: absolute;
-    top:0; left: 0;
-    height: 100%;
-    width: 100%;
-    background:linear-gradient(45deg, blueviolet, deeppink);
-    border-radius: 5px;
-    padding: 20px 0;
-    text-align: right;
-    backface-visibility: hidden;
-    box-shadow: 0 15px 25px rgba(0,0,0,.2);
-    transform:perspective(1000px) rotateY(180deg);
-    transition:transform .4s ease-out;
-}
-
-.container .card-container .back .stripe{
-    background: #000;
-    width: 100%;
-    margin: 10px 0;
-    height: 50px;
-}
-
-.container .card-container .back .box{
-    padding: 0 20px;
-}
-
-.container .card-container .back .box span{
-    color:#fff;
-    font-size: 15px;
-}
-
-.container .card-container .back .box .cvv-box{
-    height: 50px;
-    padding: 10px;
-    margin-top: 5px;
-    color:#333;
-    background: #fff;
-    border-radius: 5px;
-    width: 100%;
-}
-
-.container .card-container .back .box img{
-    margin-top: 30px;
-    height: 30px;
-}
+  }
+  .btn:hover{
+    background-color: #21be2eec;
+  }
