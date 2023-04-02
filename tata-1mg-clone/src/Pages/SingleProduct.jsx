@@ -15,20 +15,19 @@ import {
   SimpleGrid,
   StackDivider,
   useColorModeValue,
-  VisuallyHidden,
   List,
   ListItem,
 } from "@chakra-ui/react";
 import { MdLocalShipping } from "react-icons/md";
 import { TbReplace, TbTruckDelivery } from "react-icons/tb";
-import {ImageCard} from "./ImageCard";
+import { ImageCard } from "./ImageCard";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
 export function SingleProduct() {
-  const {category,id} = useParams();
-  const [product,setProduct] = useState(null);
-  
+  const { category, id } = useParams();
+  const [product, setProduct] = useState(null);
+
   const url = {
     "vitamin-nutritiion" : "https://good-pear-cheetah-tutu.cyclic.app/vitamin",
     "ayurveda-products"  : "https://good-pear-cheetah-tutu.cyclic.app/ayurveda",
@@ -44,29 +43,29 @@ export function SingleProduct() {
   const addToCart = () => {
     let cartData = JSON.parse(localStorage.getItem("cart")) || [];
     let DuplicateData = false;
-    cartData.forEach((el,ind)=> {
-      if(el.id === product.id && el.title == product.title){
+    cartData.forEach((el, ind) => {
+      if (el.id === product.id && el.title == product.title) {
         DuplicateData = true;
       }
-    })
-    if(DuplicateData){
+    });
+    if (DuplicateData) {
       alert("Product already exist");
       return;
     }
-    let newCard = [...cartData, {...product, quantity: 1}];
-    localStorage.setItem("cart",JSON.stringify(newCard))
-  }
+    let newCard = [...cartData, { ...product, quantity: 1 }];
+    localStorage.setItem("cart", JSON.stringify(newCard));
+  };
 
-
-  useEffect(()=>{
-    axios.get(`${url[category]}/${id}`)
-      .then((res)=>{
+  useEffect(() => {
+    axios
+      .get(`${url[category]}/${id}`)
+      .then((res) => {
         setProduct(res.data);
       })
-      .catch(error=>console.log(error));
-    },[])
-    
-    // console.log(product)
+      .catch((error) => console.log(error));
+  }, []);
+
+  // console.log(product)
 
   return (
     <div>
@@ -78,7 +77,7 @@ export function SingleProduct() {
           py={{ base: 10, md: 14 }}
         >
           <Box>
-               {product && <ImageCard key={product?.id} imgs={product?.images}/> }
+            {product && <ImageCard key={product?.id} imgs={product?.images} />}
           </Box>
           <Stack spacing={{ base: 6, md: 10 }}>
             <Stack
@@ -139,22 +138,20 @@ export function SingleProduct() {
                   fontSize={{ base: "16px", lg: "18px" }}
                   color={useColorModeValue("yellow.500", "yellow.300")}
                   fontWeight={"500"}
-                  textTransform={"uppercase"}
+                  
                   mb={"4"}
                 >
                   Product Description
                 </Text>
 
-                <Text align={"justify"}>
-                  {product?.desc}
-                </Text>
+                <Text align={"justify"}>{product?.desc}</Text>
               </Box>
               <Box align={"left"}>
                 <Text
                   fontSize={{ base: "16px", lg: "18px" }}
                   color={useColorModeValue("yellow.500", "yellow.300")}
                   fontWeight={"500"}
-                  textTransform={"uppercase"}
+                  
                   mb={"4"}
                 >
                   Product Delivery
@@ -226,7 +223,7 @@ export function SingleProduct() {
                     fontSize={{ base: "16px", lg: "18px" }}
                     color={useColorModeValue("yellow.500", "yellow.300")}
                     fontWeight={"500"}
-                    textTransform={"uppercase"}
+                    
                     mb={"4"}
                   >
                     Product Details
@@ -235,21 +232,25 @@ export function SingleProduct() {
                   <List spacing={2}>
                     <ListItem>
                       <Text as={"span"} fontWeight={"bold"}>
-                      Available:
+                        Available:
                       </Text>{" "}
                       <span style={{ fontWeight: "500" }}>In Stock</span>
                     </ListItem>
                     <ListItem>
                       <Text as={"span"} fontWeight={"bold"}>
-                      Category:
-                        </Text>{" "}
-                        <span style={{ fontWeight: "500" }}>{product?.category}</span>
+                        Category:
+                      </Text>{" "}
+                      <span style={{ fontWeight: "500" }}>
+                        {product?.category}
+                      </span>
                     </ListItem>
                     <ListItem>
                       <Text as={"span"} fontWeight={"bold"}>
-                      Brand:
-                        </Text>{" "}
-                        <span style={{ fontWeight: "500" }}>{product?.brand}</span>
+                        Brand:
+                      </Text>{" "}
+                      <span style={{ fontWeight: "500" }}>
+                        {product?.brand}
+                      </span>
                     </ListItem>
                   </List>
                 </Box>
@@ -264,7 +265,7 @@ export function SingleProduct() {
               py={"7"}
               bg={useColorModeValue("gray.900", "gray.50")}
               color={useColorModeValue("white", "gray.900")}
-              textTransform={"uppercase"}
+              
               _hover={{
                 transform: "translateY(2px)",
                 boxShadow: "lg",

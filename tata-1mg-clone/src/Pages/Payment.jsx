@@ -1,7 +1,8 @@
 import React from "react";
 import Navbar from "../Component/Navbar";
 import Footer from "./Footer";
-import {CreditCard} from "../Component/CreditCard"
+import CreditCard from "../Component/CreditCard"
+
 function Payment() {
   return (
     <div>

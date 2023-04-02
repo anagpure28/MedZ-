@@ -11,13 +11,17 @@ import {
     Th,
     Thead,
     Tr,
-    Text
+    Text,
+    Alert,
+    AlertIcon,
+    Box
 } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import { useDispatch, useSelector } from 'react-redux';
-import {DeleteIcon, ExternalLinkIcon} from "@chakra-ui/icons"
+import { DeleteIcon, ExternalLinkIcon } from "@chakra-ui/icons"
 import { deletedata, postdata } from '../../Redux/AdminCRUD/action';
 import { Vitamin } from '../../Redux/AdminAlldataReducer/action';
+import { Link } from 'react-router-dom';
 
 const initialProductFormData = {
     title: '',
@@ -30,57 +34,64 @@ const initialProductFormData = {
 };
 
 const AdminPanel = () => {
-    const dispatch= useDispatch()
+    const dispatch = useDispatch()
     const [productFormData, setProductFormData] = useState(initialProductFormData);
-    const {AdminAlldataReducer,AdminUserData}= useSelector((state)=>{return state}) 
-    const{vitamin,ayurveda,teststrip,supliment}=AdminAlldataReducer;
-    const [flag,setflag]=useState(false)
-   
+    const { AdminAlldataReducer, AdminUserData } = useSelector((state) => { return state })
+    const { vitamin, ayurveda, teststrip, supliment } = AdminAlldataReducer;
+    const [flag, setflag] = useState(false)
+    const [deleteflag, setdeletefalg] = useState(false)
+    const [addflag, setaddflag] = useState(false)
+    const [page, setpage] = useState(1)
     const handleProductInputChange = (event) => {
         const { name, value } = event.target;
-        const data1=''
-        let data = name=="images"?[...value] : value
-       
-        setProductFormData({...productFormData, [name]:data})
-     
+        // let data = name=="images"?[...value] : value
+
+        setProductFormData({ ...productFormData, [name]: value })
+
         //   setProductFormData([name]:data);
-      
+
     };
+
+
 
     // console.log(productFormData)
 
     const handleAddProduct = (event) => {
         event.preventDefault(); // Perform API call to create a new product
         dispatch(postdata(productFormData))
-        .then(()=>dispatch(Vitamin))
+            .then(() => {
+                dispatch(Vitamin)
+                
+            })
+            alert("item added successfully")
         setProductFormData(initialProductFormData)
         // setProducts([...products, productFormData])
     };
 
+
     const handleDeleteProduct = (index) => {
+        console.log(index)
         dispatch(deletedata(index))
-        .then(()=>dispatch(Vitamin))
+            .then(() => {
+                dispatch(Vitamin)
+               
+            })
+            alert("item removed successfully")
     };
-    const handlechange =(e)=>{
-
-        console.log(e.target.value)
-
-    }
 
     const handleEditProduct = (index) => {
-
         setflag(true)
-        const filterdata=vitamin.filter((item,i)=>{
-            return item.id==index
+        const filterdata = vitamin.filter((item, i) => {
+            return item.id == index
         })
         console.log(filterdata)
-        setProductFormData({...filterdata[0]})
+        setProductFormData({ ...filterdata[0] })
         // Perform API call to delete the product at index
         // setProducts(products.filter((product, i) => i !== index));
     };
 
-    
-    
+    console.log(vitamin.length)
+
     return (
         <Stack m={"auto"} mt={"15px"} w={"80%"} >
             <Text style={{ fontWeight: "bolder", fontSize: "35px" }}>Add A Product</Text>
@@ -180,9 +191,9 @@ const AdminPanel = () => {
                     <Tr>
                         <Th>Product Image</Th>
                         <Th>Product Name</Th>
-                        <Th>Price</Th>
                         <Th>Brand</Th>
                         <Th>Category</Th>
+                        <Th>Price</Th>
                         <Th>Discount</Th>
                         <Th>Edit</Th>
                         <Th>Delete</Th>
@@ -190,30 +201,36 @@ const AdminPanel = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
-                    {vitamin.length>0&&vitamin.map((product, index) => (
-                        
-                        <Tr key={index}>                           
-                            <Td><img src={product?.images[0]} alt="" /></Td>
-                            <Td><input type="text" disabled ={flag==false} onChange={handlechange} value={product.title} /></Td> 
-                            <Td><input type="text" disabled ={flag==false} onChange={handlechange} value={`₹ ${product.price}`}/></Td>
-                            <Td> <input type="text" disabled ={flag==false} onChange={handlechange} value={product.brand} /></Td>
-                            <Td> <input type="text" disabled ={flag==false} onChange={handlechange}  value={product.category} /></Td>                    
-                            <Td> <input type="text" disabled ={flag==false} onChange={handlechange} value= {`₹ ${product.discountprice}`}/></Td>
+                    {vitamin.length > 0 && vitamin.map((product, index) => (
+
+                        <Tr key={index}>
+                            <Td><img src={product?.images || product?.images[0]} alt="" /></Td>
+                            <Td>{product.title} </Td>
+                            <Td>{product.brand} </Td>
+                            <Td> {product.category}</Td>
+                            <Td> {product.price}</Td>
+                            <Td> {`₹ ${product.discountprice}`}</Td>
                             <Td>
-                                <button  onClick={() => handleEditProduct(index)}>
-                                    <ExternalLinkIcon boxSize={6}  />
+                                <Link to={`/dashboard/singleproductedit/${product.id}`}><button onClick={() => handleEditProduct(product.id)}>
+                                    <ExternalLinkIcon boxSize={6} />
                                 </button>
+                                </Link>
                             </Td>
                             <Td>
-                                <button  onClick={() => handleDeleteProduct(index)}>
-                                <DeleteIcon boxSize={6} />
+                                <button onClick={() => handleDeleteProduct(product.id)}>
+                                    <DeleteIcon boxSize={6} />
                                 </button>
-                            </Td> 
-                          
+                            </Td>
+
                         </Tr>
                     ))}
                 </Tbody>
             </Table>
+            {/* <Box display={'flex'} margin={"auto"} textAlign={"center"}>
+                <Button style={{ display:"block", margin: "10px 10px", width: "300px", backgroundColor: "#FF6F61", color: "white" }} disabled={page == 1} onClick={() => setpage(page - 1)}>Prev</Button>
+                <Button disabled style={{display:"block", margin: "10px 10px", border:"1px dotted #FF6F61", width: "100px", backgroundColor: "white", color: "grey" }} >{page}</Button>
+                <Button style={{ display:"block",margin: "10px 10px", width: "300px", backgroundColor: "#FF6F61", color: "white" }} onClick={() => setpage(page + 1)}>Next</Button>
+            </Box> */}
         </Stack>
     );
 };
