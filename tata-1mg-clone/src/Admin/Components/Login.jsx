@@ -55,7 +55,7 @@ export default function JoinOurTeam() {
   const nav = useNavigate()
   const dispatch=useDispatch()
   const handlesubmit=()=>{
-    if(email=="shoaib123"&&password=="shoaib123"){
+    if(email=="admin"&&password=="admin"){
       alert("login Successfully")
       nav('/dashboard')
       dispatch(AdminAuthSuccess())
