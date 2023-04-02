@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { userLogin } from "../Redux/AuthReducer/action";
 import { useLocation, useNavigate } from "react-router-dom";
+import { UserDataLogin } from "../Api/ApiCalls";
 export function Login() {
   const toast = useToast();
   const [email, setEmail] = useState("");
@@ -26,55 +27,71 @@ export function Login() {
   const location = useLocation();
   const [redirect, setRedirect] = useState(false);
   const navigate = useNavigate();
+  const [newuserdata, setnewuserdata] = useState([])
   const { user } = useSelector((store) => {
     return {
       user: store.authReducer.users,
       isAuth: store.authReducer.isAuth,
     };
   });
+
+
+
   const handleLogin = (e) => {
     let flag = false;
     e.preventDefault();
     setRedirect(true);
-    for (let i = 0; i < user.length; i++) {
-      if (user[i].email === email && user[i].password === password) {
-        localStorage.setItem('user',user[i].firstname+" "+user[i].lastname);
+    console.log(newuserdata)
+    for (let i = 0; i < newuserdata.length; i++) {
+      if (newuserdata[i].email === email && newuserdata[i].password === password) {
+        localStorage.setItem('user', newuserdata[i].firstname + " " + newuserdata[i].lastname);
         flag = true;
         break;
       }
     }
-    if (flag) {
+
+    // console.log("flag",flag)
+   if (flag) {
+      dispatch(userLogin);
       toast({
-        title: "Logged In 👍.",
-        description: "Login Successfully!",
-        status: "success",
-        duration: 2000,
-        isClosable: true,
-      });
-      navigate(location.state, { replace: true });
-    } else {
-      toast({
-        title: "Login Failed 🙏.",
-        description: "Invalid email and password!",
-        status: "error",
-        duration: 2000,
-        isClosable: true,
-      });
+          title: "Logged In 👍.",
+          description: "Login Successfully!",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+        });
+        navigate(location.state, { replace: true });
+      }else{
+
+        toast({
+          title: "Login Failed 🙏.",
+          description: "Invalid email and password!",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
     }
     setEmail("");
-    setPassword("");
-  };
+    setPassword("")
+  }
+    
+
   useEffect(() => {
-    dispatch(userLogin);
+
+    UserDataLogin()
+      .then((res) => setnewuserdata(res.data))
+
   }, []);
+
 
   // Redirect to home page
   if (redirect) {
     return <Navigate to={"/"} />;
   }
+
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <Flex
         minH={"100vh"}
         align={"center"}

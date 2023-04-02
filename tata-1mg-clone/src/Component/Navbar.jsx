@@ -24,9 +24,13 @@ import { BsCart3 } from "react-icons/bs";
 import Logo from "../Component/Logo/New_Logo.png";
 import { Link, NavLink, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
+  let{isAuth}=useSelector((state)=>{return state.authReducer})
+  // const [auth,setauth]=useState(isAuth)
+
   const [user,setUser] = useState("")
   const Links = [
     { path: "/health-resource", title: "Health Resource Center" },
@@ -42,10 +46,14 @@ export default function Navbar() {
   useEffect(()=>{
     let user = localStorage.getItem('user')
     setUser(user)
-  })
-  if(show){
-    localStorage.removeItem('user')
-  }
+  },[isAuth])
+  // if(show){
+  //   localStorage.removeItem('user')
+  // }
+
+  console.log("isAuth",isAuth)
+  // console.log("Auth",auth)
+
   return (
     <>
       <Box px={4} bgColor={"whiteAlpha.900"}>
@@ -141,45 +149,53 @@ export default function Navbar() {
                 CARE PLANE
               </Text>
 
+{/* Show */ }
+
+
               <div style={{ marginLeft: "100px" }}>
-                {show ? (
-                  <Center height="50px">
-                    <Link to={"/login"}>Login</Link>
-                    <Divider
-                      orientation="vertical"
-                      height={"20px"}
-                      margin={"10px"}
-                      bgColor={"blackAlpha.900"}
-                    />
-                    <Link to={"/signup"}>Sign Up</Link>
-                  </Center>
-                ) : (
-                  <Text>
-                    {user} 
-                    <Button
-                      onClick={() => setShow(!show)}
-                      marginLeft={5}
-                      width={"100px"}
-                      h={"35px"}
-                      px={4}
-                      fontSize={"sm"}
-                      rounded={"full"}
-                      bg={"#ff6f61"}
-                      color={"white"}
-                      boxShadow={
-                        "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
-                      }
-                      _hover={{
-                        bg: "blue.500",
-                      }}
-                      _focus={{
-                        bg: "blue.500",
-                      }}
-                    >
-                      Logout
-                    </Button>
-                  </Text>
-                )}
+                 
+               {!isAuth?
+               <Center height="50px">
+               <Link to={"/login"}>Login</Link>
+               <Divider
+                 orientation="vertical"
+                 height={"20px"}
+                 margin={"10px"}
+                 bgColor={"blackAlpha.900"}
+               />
+               <Link to={"/signup"}>Sign Up</Link>
+             </Center>:
+              <Text>
+              {user} 
+              <Button
+                onClick={() => isAuth=false}
+                marginLeft={5}
+                width={"100px"}
+                h={"35px"}
+                px={4}
+                fontSize={"sm"}
+                rounded={"full"}
+                bg={"#ff6f61"}
+                color={"white"}
+                boxShadow={
+                  "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
+                }
+                _hover={{
+                  bg: "blue.500",
+                }}
+                _focus={{
+                  bg: "blue.500",
+                }}
+              >
+
+                Logout
+              </Button>
+            </Text>
+               
+              }   
+  {/* Show */ }            
+                 
+              
               </div>
               <Text
                 transform="scale(1.0)"
@@ -233,6 +249,7 @@ export default function Navbar() {
                   <RiArrowDropDownLine />
                 </NavLink>
               ))}
+
               <div style={{ marginLeft: "150px" }}>
                 <Center height="50px">
                   <Link to={"/login"}>Login</Link>
