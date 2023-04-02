@@ -31,7 +31,7 @@ const UsersDashboard = ({ usersData }) => {
           </Heading>
           <SimpleGrid columns={1} spacing={4}>
             {usersData.slice(0, 17).map(user => (
-             <div style={{display:"flex"}}>
+             <div key={user.id} style={{display:"flex"}}>
                <Img width={"100px"} height={'100px'} src={verify}></Img>
               <Box w={"80%"} bg={"gray.100"} key={user.id}  p="4" borderRadius="md">
                 <Text fontSize={"2xl"} fontWeight="bold">Name :  {user.firstname} {user.lastname}</Text>
@@ -62,8 +62,8 @@ const UsersDashboard = ({ usersData }) => {
               }, {})
             ).map(([age, count]) => (
               <Box key={age} bg="gray.100" p="4" borderRadius="md">
-                <Text fontWeight="bold">{age}</Text>
-                <Text fontSize="sm"><img width="50px" height="50px" src={User} alt="" />{count} users</Text>
+                <Text fontSize="lg" fontWeight="bold">Age : {age}</Text>
+                <Text fontSize="lg"><img width="50px" height="50px" src={User} alt="" />{count} users</Text>
               </Box>
             ))}
           </SimpleGrid>

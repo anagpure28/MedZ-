@@ -6,6 +6,7 @@ import {reducer as productReducer } from "./productReducer/reducer";
 import { reducer as allProdcutReducer } from "./AllProductsReducer/reducer";
 import {reducer as AdminUserData} from './AdminUserReducer/reducer'
 import {reducer as AdminAlldataReducer} from './AdminAlldataReducer/reducer'
+import {reducer as CRUDReducer} from './AdminCRUD/reducer'
 import thunk from "redux-thunk";
 const rootreducer = (combineReducers({
     AdminAuth,
@@ -13,7 +14,8 @@ const rootreducer = (combineReducers({
     productReducer,
     allProdcutReducer,
     AdminUserData, 
-    AdminAlldataReducer
+    AdminAlldataReducer,
+    CRUDReducer
 }))
 
 export const store = legacy_createStore(rootreducer,applyMiddleware(thunk));
