@@ -9,5 +9,25 @@ Original Website Link: "https://www.1mg.com/"
 
 Deployed Link of project: ""
 
+                                                             Landing Page
 ![front](https://user-images.githubusercontent.com/92313981/229344642-4c85116c-375c-4969-9814-23e0fca3cacd.png)
 
+                                                             Product Page
+![image](https://user-images.githubusercontent.com/92313981/229344844-939da59b-dfdf-4c84-b487-fc2aa8c573c3.png)
+
+                                                             Single Product Page
+![image](https://user-images.githubusercontent.com/92313981/229345297-00006472-cbd8-47eb-bb50-6f6a21de8df6.png)
+
+                                                             Cart Page
+![image](https://user-images.githubusercontent.com/92313981/229345247-5bc0f245-5b6c-4863-b6b3-38ff8bbb6208.png)
+
+                                                             Payment Page
+
+
+Contributors
+
+Shoaib Mansuri | Aniket Nagpure | Ram Surat | Rishabh Roy | Vikas 
+
+🛠 Tech Stack
+
+Tech stack: HTML | CSS | Javascript | ReactJS | Chakra UI | Redux
