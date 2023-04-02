@@ -24,9 +24,10 @@ import { BsCart3 } from "react-icons/bs";
 import Logo from "../Component/Logo/New_Logo.png";
 import { Link, NavLink, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
   const [user,setUser] = useState("")
   const Links = [
     { path: "/health-resource", title: "Health Resource Center" },
@@ -39,13 +40,15 @@ export default function Navbar() {
     { path: "/homeopathy", title: "Homeopathy" },
     { path: "/featured", title: "Featured" },
   ];
-  useEffect(()=>{
-    let user = localStorage.getItem('user')
-    setUser(user)
-  })
-  if(show){
-    localStorage.removeItem('user')
-  }
+  // useEffect(()=>{
+  //   let user = localStorage.getItem('user')
+  //   setUser(user)
+  // })
+  // if(show){
+  //   localStorage.removeItem('user')
+  // }
+  const  isAuth  = useSelector((store)=>console.log(store))
+  console.log(isAuth);
   return (
     <>
       <Box px={4} bgColor={"whiteAlpha.900"}>
@@ -142,7 +145,6 @@ export default function Navbar() {
               </Text>
 
               <div style={{ marginLeft: "100px" }}>
-                {show ? (
                   <Center height="50px">
                     <Link to={"/login"}>Login</Link>
                     <Divider
@@ -153,11 +155,8 @@ export default function Navbar() {
                     />
                     <Link to={"/signup"}>Sign Up</Link>
                   </Center>
-                ) : (
                   <Text>
-                    {user} 
                     <Button
-                      onClick={() => setShow(!show)}
                       marginLeft={5}
                       width={"100px"}
                       h={"35px"}
@@ -179,7 +178,6 @@ export default function Navbar() {
                       Logout
                     </Button>
                   </Text>
-                )}
               </div>
               <Text
                 transform="scale(1.0)"
@@ -362,13 +360,13 @@ export default function Navbar() {
                     display: "flex",
                     alignItems: "center",
                     color: "#ff6f61",
-                    fontSize: "14px",
+                    fontSize: "16px",
                   }
                 : {
                     display: "flex",
                     alignItems: "center",
                     color: "black",
-                    fontSize: "14px",
+                    fontSize: "16px",
                   };
             }}
             to={link.path}
