@@ -61,21 +61,22 @@ const AdminPanel = () => {
         dispatch(postdata(productFormData))
             .then(() => {
                 dispatch(Vitamin)
-                setaddflag(true)
-                alert("item added successfully")
+                
             })
+            alert("item added successfully")
         setProductFormData(initialProductFormData)
         // setProducts([...products, productFormData])
     };
 
 
     const handleDeleteProduct = (index) => {
+        console.log(index)
         dispatch(deletedata(index))
             .then(() => {
                 dispatch(Vitamin)
-                setdeletefalg(true)
-                alert("item removed successfully")
+               
             })
+            alert("item removed successfully")
     };
 
     const handleEditProduct = (index) => {
@@ -210,13 +211,13 @@ const AdminPanel = () => {
                             <Td> {product.price}</Td>
                             <Td> {`₹ ${product.discountprice}`}</Td>
                             <Td>
-                                <Link to={`/dashboard/singleproductedit/${product.id}`}><button onClick={() => handleEditProduct(index)}>
+                                <Link to={`/dashboard/singleproductedit/${product.id}`}><button onClick={() => handleEditProduct(product.id)}>
                                     <ExternalLinkIcon boxSize={6} />
                                 </button>
                                 </Link>
                             </Td>
                             <Td>
-                                <button onClick={() => handleDeleteProduct(index)}>
+                                <button onClick={() => handleDeleteProduct(product.id)}>
                                     <DeleteIcon boxSize={6} />
                                 </button>
                             </Td>
