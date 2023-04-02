@@ -28,14 +28,14 @@ export function Login() {
   const [redirect, setRedirect] = useState(false);
   const navigate = useNavigate();
   const [newuserdata, setnewuserdata] = useState([])
-  const { user } = useSelector((store) => {
+  const { user , isAuth } = useSelector((store) => {
     return {
       user: store.authReducer.users,
       isAuth: store.authReducer.isAuth,
     };
   });
 
-
+console.log(isAuth);
 
   const handleLogin = (e) => {
     let flag = false;
@@ -82,13 +82,15 @@ export function Login() {
       .then((res) => setnewuserdata(res.data))
 
   }, []);
-
-
-  // Redirect to home page
+  
   if (redirect) {
     return <Navigate to={"/"} />;
   }
-
+// console.log(location.state);
+  // Redirect to home page
+  if(isAuth){
+    navigate(location.state, { replace: true });
+  }
   return (
     <>
       <Navbar />

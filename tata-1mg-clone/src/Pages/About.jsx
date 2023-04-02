@@ -37,7 +37,7 @@ const testimonials = [
     name: "Rishabh Roy.",
     role: "Full Stack Web Developer",
     content:
-      "I developed an administrative website as part of this project, which includes an admin dashboard, user data dashboard, and all relevant CRUD (Create, Read, Update, Delete) operations.!",
+      "I was responsible for creating reusable components for products card, lab test card, pagination as well as brand cards. I also developed the cart page with all the required functionalities.!",
     avatar: "https://avatars.githubusercontent.com/u/80843510?v=4",
   },
 ];
@@ -126,7 +126,7 @@ function TestimonialCard(props) {
           m={{ base: "0 0 35px 0", md: "0 0 0 50px" }}
         />
         <Button
-          marginLeft={{sm:'4px',lg:'50px'}}
+          marginLeft={{sm:'4px', md:'50px',lg:'50px'}}
           marginTop={5}
           marginBottom={{sm:'5px'}}
           px={4}

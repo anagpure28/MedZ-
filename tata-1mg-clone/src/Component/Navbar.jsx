@@ -26,6 +26,7 @@ import { Link, NavLink, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 export default function Navbar() {
+  const [auth,setAuth] = useState("")
   const { isOpen, onOpen, onClose } = useDisclosure();
   // const [show, setShow] = useState(false);
   let{isAuth}=useSelector((state)=>{return state.authReducer})
@@ -164,7 +165,7 @@ export default function Navbar() {
               <Text>
               {user} 
               <Button
-                onClick={() => isAuth=false}
+                onClick={() => setAuth(!isAuth)}
                 marginLeft={5}
                 width={"100px"}
                 h={"35px"}
@@ -375,13 +376,13 @@ export default function Navbar() {
                     display: "flex",
                     alignItems: "center",
                     color: "#ff6f61",
-                    fontSize: "14px",
+                    fontSize: "16px",
                   }
                 : {
                     display: "flex",
                     alignItems: "center",
                     color: "black",
-                    fontSize: "14px",
+                    fontSize: "16px",
                   };
             }}
             to={link.path}
