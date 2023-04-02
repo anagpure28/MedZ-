@@ -27,10 +27,8 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  // const [show, setShow] = useState(false);
   let{isAuth}=useSelector((state)=>{return state.authReducer})
   // const [auth,setauth]=useState(isAuth)
-
   const [user,setUser] = useState("")
   const Links = [
     { path: "/health-resource", title: "Health Resource Center" },
@@ -43,6 +41,7 @@ export default function Navbar() {
     { path: "/homeopathy", title: "Homeopathy" },
     { path: "/featured", title: "Featured" },
   ];
+  
   useEffect(()=>{
     let user = localStorage.getItem('user')
     setUser(user)
@@ -53,7 +52,6 @@ export default function Navbar() {
 
   console.log("isAuth",isAuth)
   // console.log("Auth",auth)
-
   return (
     <>
       <Box px={4} bgColor={"whiteAlpha.900"}>
@@ -152,8 +150,7 @@ export default function Navbar() {
 {/* Show */ }
 
 
-              <div style={{ marginLeft: "100px" }}>
-                 
+              <div style={{ marginLeft: "100px" }}> 
                {!isAuth?
                <Center height="50px">
                <Link to={"/login"}>Login</Link>
@@ -196,6 +193,7 @@ export default function Navbar() {
   {/* Show */ }            
                  
               
+
               </div>
               <Text
                 transform="scale(1.0)"
@@ -379,13 +377,13 @@ export default function Navbar() {
                     display: "flex",
                     alignItems: "center",
                     color: "#ff6f61",
-                    fontSize: "14px",
+                    fontSize: "16px",
                   }
                 : {
                     display: "flex",
                     alignItems: "center",
                     color: "black",
-                    fontSize: "14px",
+                    fontSize: "16px",
                   };
             }}
             to={link.path}
