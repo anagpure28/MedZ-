@@ -41,11 +41,11 @@ function AllRoutes() {
         <Route path='/about' element={<About/>}/>
         {/* Admin */}
         <Route path='/adminlogin' element={<AdminLogin />}/> 
-        <Route path='/dashboard' element={ <Dashboard />}/> 
-        <Route path='/dashboard/userdetails' element={ <Userdetails />}/>
-        <Route path='/dashboard/editproduct' element={ <Editproudct />}/>
+        <Route path='/dashboard' element={  <Dashboard />}/> 
+        <Route path='/dashboard/userdetails' element={<AdminPrivateroute> <Userdetails /></AdminPrivateroute>}/>
+        <Route path='/dashboard/editproduct' element={<AdminPrivateroute> <Editproudct /></AdminPrivateroute>}/>
         <Route path='/dashboard/allproducts' element={<AdminPrivateroute> <Allproduct /></AdminPrivateroute>}/>
-        <Route path='/dashboard/singleproductedit/:id' element={<Singleprodcutedit />} />
+        <Route path='/dashboard/singleproductedit/:id' element={<AdminPrivateroute><Singleprodcutedit /></AdminPrivateroute>} />
 
         {/* Admin */}
         {/*  */}
