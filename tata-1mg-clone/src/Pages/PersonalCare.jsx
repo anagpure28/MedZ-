@@ -35,7 +35,8 @@ const PersonalCare = () => {
   const [brand, setBrand] = useState(initialBrand || []);
   const [category, setCotegory] = useState(initialCategory || []);
   const [price,setPrice] = useState(initialPrice || "");
-  const [page,setPage] = useState(0);
+  const initialPage = searchParams.get("page");
+  const [page, setPage] = useState(+initialPage || 1);
   const { supplements, isLoading, isError } = useSelector((store) => {
     // console.log(store.allProdcutReducer);
     return {
@@ -120,10 +121,10 @@ const PersonalCare = () => {
               height={'50%'}
               marginTop={'10px'}
             >
-              <Text marginLeft={"5px"} fontWeight={"bold"}>
+              <Text marginLeft={"15px"} fontWeight={"bold"} fontSize={'14px'}>
                 FILTERS
               </Text>
-              <Divider orientation="horizontal" width="100%" />
+              <Divider orientation="horizontal" width="100%" backgroundColor={'blackAlpha.900'}/>
               <Accordion allowMultiple>
                 <AccordionItem>
                   {({ isExpanded }) => (
@@ -169,6 +170,7 @@ const PersonalCare = () => {
                     </>
                   )}
                 </AccordionItem>
+                <Divider orientation="horizontal" width="100%" backgroundColor={'blackAlpha.900'} />
                 <AccordionItem>
                   {({ isExpanded }) => (
                     <>
@@ -237,6 +239,7 @@ const PersonalCare = () => {
                     </>
                   )}
                 </AccordionItem>
+                <Divider orientation="horizontal" width="100%" backgroundColor={'blackAlpha.900'} />
                 <AccordionItem>
                   {({ isExpanded }) => (
                     <>
@@ -274,6 +277,7 @@ const PersonalCare = () => {
                     </>
                   )}
                 </AccordionItem>
+                <Divider orientation="horizontal" width="100%" backgroundColor={'blackAlpha.900'} />
               </Accordion>
             </Box>
             {/* Paroduct Page */}
@@ -323,7 +327,7 @@ const PersonalCare = () => {
                     ))}
                 </div>
               )}
-              <Pagination currentPage={page} setPage={setPage} />
+              <Pagination page={page} setPage={setPage} />
             </Box>
           </Flex>
         </Container>

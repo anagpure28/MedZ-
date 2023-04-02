@@ -304,7 +304,7 @@ export default function Navbar() {
       </div>
       <HStack
         as={"nav"}
-        spacing={4}
+        spacing={2}
         display={{ base: "none", md: "flex" }}
         justifyContent={"center"}
         maxW={"100%"}
@@ -316,8 +316,8 @@ export default function Navbar() {
           <NavLink
             style={({ isActive }) => {
               return isActive
-                ? { display: "flex", alignItems: "center", color: "#ff6f61" }
-                : { display: "flex", alignItems: "center", color: "black" };
+                ? { display: "flex", alignItems: "center", color: "#ff6f61",fontSize:'14px' }
+                : { display: "flex", alignItems: "center", color: "black",fontSize:'14px' };
             }}
             to={link.path}
             key={link.path}
