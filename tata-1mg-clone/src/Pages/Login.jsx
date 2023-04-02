@@ -35,7 +35,7 @@ export function Login() {
     };
   });
 
-console.log(isAuth);
+// console.log(isAuth);
 
   const handleLogin = (e) => {
     let flag = false;
@@ -83,20 +83,19 @@ console.log(isAuth);
 
   }, []);
   
-  if (redirect) {
-    return <Navigate to={"/"} />;
-  }
+  // if (redirect) {
+  //   return <Navigate to={"/"} />;
+  // }
 // console.log(location.state);
   // Redirect to home page
   if(isAuth){
-    navigate(location.state, { replace: true });
+    navigate('/payment');
   }
   return (
     <>
       <Navbar />
       <Flex
         minH={"100vh"}
-        align={"center"}
         justify={"center"}
         bgColor={"#edeeee"}
       >

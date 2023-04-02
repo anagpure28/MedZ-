@@ -29,7 +29,7 @@
   .data-container{
     border: 1px solid black;
     width: 50%;
-    height: 70%;
+    height: 80%;
     border-radius: 20px;
   }
 
@@ -48,6 +48,7 @@
   }
   .bodyCont{
     height: 70%;
+    width: 100%;
   }
   .bodyCont>img{
     height: 100%;

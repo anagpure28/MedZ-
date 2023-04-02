@@ -18,7 +18,7 @@ import { PieChart, Pie, Cell, Legend } from 'recharts';
       ];
 
     return (
-      <PieChart style={{display:"block"}} width={700} height={400}>
+      <PieChart style={{display:"block"}} width={356} height={400}>
         <Pie
           data={data}
           dataKey="value"

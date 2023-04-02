@@ -174,7 +174,7 @@ const AdminPanel = () => {
                     </FormControl>
 
                     <FormControl id="desc">
-                        <FormLabel>Discription</FormLabel>
+                        <FormLabel>Description</FormLabel>
                         <Input
                             border={"1px dotted black"}
                             type="text"
@@ -194,7 +194,7 @@ const AdminPanel = () => {
                         <Th>Brand</Th>
                         <Th>Category</Th>
                         <Th>Price</Th>
-                        <Th>Discount</Th>
+                        <Th>Discounted Price</Th>
                         <Th>Edit</Th>
                         <Th>Delete</Th>
 

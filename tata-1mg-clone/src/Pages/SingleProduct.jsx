@@ -136,8 +136,8 @@ export function SingleProduct() {
 
               <Box align={"left"}>
                 <Text
-                  fontSize={{ base: "16px", lg: "18px" }}
-                  color={useColorModeValue("yellow.500", "yellow.300")}
+                   fontSize={{ base: "16px", lg: "22px" }}
+                   color={useColorModeValue("pink.400", "orange.400")}
                   fontWeight={"500"}
                   
                   // mb={"2"}
@@ -149,8 +149,9 @@ export function SingleProduct() {
               </Box>
               <Box align={"left"}>
                 <Text
-                  fontSize={{ base: "16px", lg: "18px" }}
-                  color={useColorModeValue("yellow.500", "yellow.300")}
+                  fontSize={{ base: "16px", lg: "22px" }}
+                  color={useColorModeValue("pink.400", "orange.400")}
+
                   fontWeight={"500"}
                   
                   mb={"1"}
@@ -221,11 +222,11 @@ export function SingleProduct() {
 
                 <Box pt={1}>
                   <Text
-                    fontSize={{ base: "16px", lg: "18px" }}
-                    color={useColorModeValue("yellow.500", "yellow.300")}
+                    fontSize={{ base: "16px", lg: "22px" }}
+                    color={useColorModeValue("pink.400", "orange.400")}
                     fontWeight={"500"}
-                    
                     mb={"1"}
+                    
                   >
                     Product Details
                   </Text>

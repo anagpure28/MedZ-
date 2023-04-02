@@ -30,7 +30,7 @@ const UsersDashboard = ({ usersData }) => {
             All users
           </Heading>
           <SimpleGrid columns={1} spacing={4}>
-            {usersData.slice(0, 17).map(user => (
+            {usersData.slice(0, 50).map(user => (
              <div key={user.id} style={{display:"flex"}}>
                <Img width={"100px"} height={'100px'} src={verify}></Img>
               <Box w={"80%"} bg={"gray.100"} key={user.id}  p="4" borderRadius="md">
