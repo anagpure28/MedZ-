@@ -29,7 +29,7 @@ Login | SignUp | Searching | Sorting | Filtering | Pagination | Active User PieC
 
 Contributors
 
-Shoaib Mansuri | Aniket Nagpure | Ram Surat | Rishabh Roy | Vikas 
+Shoaib Mansuri | Aniket Nagpure | Ram Surat | Rishabh Roy | Vikas Suresh
 
 🛠 Tech Stack
 
