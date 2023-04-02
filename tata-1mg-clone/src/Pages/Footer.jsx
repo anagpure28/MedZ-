@@ -18,6 +18,7 @@ import {
   FaInstagram,
   FaLinkedin,
   FaFacebook,
+  FaLocation
 } from "react-icons/fa";
 
 const ListHeader = ({ children }) => {
