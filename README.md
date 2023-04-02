@@ -7,7 +7,7 @@ Tata 1mg is India's leading online chemist with over 2 lakh medicines available 
 
 Original Website Link: "https://www.1mg.com/"
 
-Deployed Link of project: ""
+Deployed Link of project: "https://medzplus.vercel.app/"
 
                                                     Landing Page
 ![front](https://user-images.githubusercontent.com/92313981/229344642-4c85116c-375c-4969-9814-23e0fca3cacd.png)
@@ -23,6 +23,9 @@ Deployed Link of project: ""
 
                                                     Payment Page
  ![image](https://user-images.githubusercontent.com/92313981/229368464-56cf9e64-f9ea-4c97-a3b3-4b5781b0c264.png)
+ 
+                                                    Developers
+ ![WhatsApp Image 2023-04-02 at 22 55 26](https://user-images.githubusercontent.com/92313981/229374201-6f143cf0-33a0-4d9e-8440-cef0f164d720.jpg)
 
 Functionality
 
