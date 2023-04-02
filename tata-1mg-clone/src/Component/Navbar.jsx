@@ -46,14 +46,10 @@ export default function Navbar() {
   useEffect(()=>{
     let user = localStorage.getItem('user')
     setUser(user)
-  },[isAuth])
+  },[])
   // if(show){
   //   localStorage.removeItem('user')
   // }
-
-  console.log("isAuth",isAuth)
-  // console.log("Auth",auth)
-
   return (
     <>
       <Box px={4} bgColor={"whiteAlpha.900"}>
