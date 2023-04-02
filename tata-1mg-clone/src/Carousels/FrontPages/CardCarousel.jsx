@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ProductCard from '../../Component/ProductCard';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 // Settings for the slider
 const settings = {
@@ -18,6 +19,12 @@ const settings = {
 };
 
 export default function CardCarousel({url, label}) {
+  const link = {
+    "Top Vitamin Supplements" : "/vitamin-nutritiion",
+    "Ayurvedic products" : "/ayurveda-products",
+    "Test strips & lancets":"/health-device",
+    "Antioxidants | supplement of the week":"/personal-care"
+  }
   const [slider, setSlider] = React.useState(null);
   const [product, setProducts] = useState([])
   const top = useBreakpointValue({ base: '90%', md: '50%' });
@@ -30,6 +37,7 @@ export default function CardCarousel({url, label}) {
   },[])
 
   return (
+    <Link to={link[label]}>
     <div style={{width: "95%", margin: "auto"}}>
         <Box
         position={'relative'}
@@ -80,5 +88,6 @@ export default function CardCarousel({url, label}) {
             </div>
         </Box>
     </div>
+    </Link>
   );
 }
