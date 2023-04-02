@@ -25,6 +25,7 @@ import Allproduct from '../Admin/Pages/Allproduct'
 import Editproudct from '../Admin/Pages/Editproudct'
 import Signup from './Signup'
 import Cart from './Cart'
+import Singleprodcutedit from '../Admin/Pages/Singleprodcutedit'
 
 function AllRoutes() {
   return (
@@ -42,7 +43,7 @@ function AllRoutes() {
         <Route path='/dashboard/userdetails' element={ <Userdetails />}/>
         <Route path='/dashboard/editproduct' element={ <Editproudct />}/>
         <Route path='/dashboard/allproducts' element={<AdminPrivateroute> <Allproduct /></AdminPrivateroute>}/>
-
+        <Route path='/dashboard/singleproductedit/:id' element={<Singleprodcutedit />} />
 
         {/* Admin */}
         {/*  */}
