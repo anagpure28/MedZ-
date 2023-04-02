@@ -84,7 +84,7 @@ function Cart() {
   function onCheckout(){
     if(!isAuth){
       alert("Please login to proceed.")
-      navigate("/login");
+      navigate("/payment");
     }
   }
 
