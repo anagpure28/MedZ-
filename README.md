@@ -22,6 +22,7 @@ Deployed Link of project: ""
 ![image](https://user-images.githubusercontent.com/92313981/229345247-5bc0f245-5b6c-4863-b6b3-38ff8bbb6208.png)
 
                                                     Payment Page
+ ![image](https://user-images.githubusercontent.com/92313981/229368464-56cf9e64-f9ea-4c97-a3b3-4b5781b0c264.png)
 
 Functionality
 
