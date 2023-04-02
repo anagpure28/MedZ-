@@ -15,11 +15,11 @@
   }
 
   .cont-1{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     width: 50%;
   }
   .cont-2{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     width: 50%;
     display: flex;
     justify-content: center;
@@ -29,6 +29,48 @@
   .data-container{
     border: 1px solid black;
     width: 50%;
+    height: 70%;
+    border-radius: 20px;
+  }
+
+  .headingCont{
+    height: 15%;
+    background-image: url(https://img.freepik.com/premium-photo/copy-space-abstract-blur-pastel-violet-with-orange-texture-background_66899-2357.jpg);
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    display: flex;
+  }
+  .headingCont > p{
+    margin: auto;
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+  }
+  .bodyCont{
+    height: 70%;
+  }
+  .bodyCont>img{
+    height: 100%;
+  }
+  .lastCont{
+    height: 15%;
+    background-image: url(https://img.freepik.com/premium-photo/copy-space-abstract-blur-pastel-violet-with-orange-texture-background_66899-2357.jpg);
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+  }
+  .lastCont > p{
+    margin: auto;
+    color: black;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .lastCont > p > span{
+    margin: auto;
+    font-size: 20px;
+    font-weight: 500;
+    color: black;
   }
   
   .container-fluid {
@@ -36,7 +78,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
     flex-direction: column;
     width: 500px;
     padding: 20px;
@@ -218,11 +260,11 @@
     width: 100%;
     height: 50px;
   }
-  .btn{
+  .btnPayment{
     height: 35px;
     border-radius: 10px;
     cursor: pointer;
   }
-  .btn:hover{
+  .btnPayment:hover{
     background-color: #21be2eec;
   }
