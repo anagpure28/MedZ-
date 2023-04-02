@@ -23,6 +23,9 @@ Deployed Link of project: ""
 
                                                     Payment Page
 
+Functionality
+
+Login | SignUp | Searching | Sorting | Filtering | Pagination | Active User PieChart | Real Time Data Rendering | Payment Gateway.
 
 Contributors
 
