@@ -6,16 +6,16 @@ import {
   Input,
   Checkbox,
   Stack,
-  Link,
   Button,
   Image,
   useToast,
 } from "@chakra-ui/react";
+import { Link, Navigate } from "react-router-dom";
 import Navbar from "../Component/Navbar";
 import Footer from "./Footer";
 import Logo from "../Component/Logo/New_Logo.png";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { userLogin } from "../Redux/AuthReducer/action";
 import { useLocation, useNavigate } from "react-router-dom";
 export function Login() {
@@ -24,20 +24,21 @@ export function Login() {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const location = useLocation();
+  const [redirect, setRedirect] = useState(false);
   const navigate = useNavigate();
-  const { user,isAuth } = useSelector((store) => {
+  const { user } = useSelector((store) => {
     return {
       user: store.authReducer.users,
-      isAuth : store.authReducer.isAuth
+      isAuth: store.authReducer.isAuth,
     };
   });
-  console.log(isAuth);
   const handleLogin = (e) => {
-    e.preventDefault();
-    dispatch(userLogin).then(()=>{
     let flag = false;
+    e.preventDefault();
+    setRedirect(true);
     for (let i = 0; i < user.length; i++) {
       if (user[i].email === email && user[i].password === password) {
+        localStorage.setItem('user',user[i].firstname+" "+user[i].lastname);
         flag = true;
         break;
       }
@@ -50,7 +51,7 @@ export function Login() {
         duration: 2000,
         isClosable: true,
       });
-      navigate(location.state,{replace : true})
+      navigate(location.state, { replace: true });
     } else {
       toast({
         title: "Login Failed 🙏.",
@@ -62,14 +63,18 @@ export function Login() {
     }
     setEmail("");
     setPassword("");
-    })
   };
-  // useEffect(() => {
-  //   dispatch(userLogin);
-  // }, []);
+  useEffect(() => {
+    dispatch(userLogin);
+  }, []);
+
+  // Redirect to home page
+  if (redirect) {
+    return <Navigate to={"/"} />;
+  }
   return (
     <>
-      <Navbar />
+      <Navbar/>
       <Flex
         minH={"100vh"}
         align={"center"}
@@ -115,11 +120,19 @@ export function Login() {
               <Stack spacing={10}>
                 <Stack
                   direction={{ base: "column", sm: "row" }}
-                  align={"start"}
-                  justify={"space-between"}
+                  align={"center"}
+                  justify={"space-around"}
                 >
                   <Checkbox color={"black"}>Remember me</Checkbox>
-                  <Link color={"blue.400"}>Forgot password?</Link>
+                  <Link style={{ color: "blue", fontSize: "15px" }}>
+                    Forgot password?
+                  </Link>
+                  <Link
+                    style={{ color: "blue", fontSize: "15px" }}
+                    to={"/signup"}
+                  >
+                    Sign Up
+                  </Link>
                 </Stack>
                 <Button
                   onClick={handleLogin}

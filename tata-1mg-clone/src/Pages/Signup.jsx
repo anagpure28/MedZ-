@@ -45,12 +45,27 @@ export default function Signup() {
   const handleUser = (e) => {
     e.preventDefault();
     dispatch(CreateUser(formState)).then(()=>{
-      if(isAuth){
-        return <Navigate to={'/login'} />
-      }
+      toast({
+        title: "Account Created 👍.",
+        description: "We created Account for you!",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+      });
+    }).catch(()=>{
+      toast({
+        title: "Account Not Created.",
+        description: "Failed to Create Account!",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
     })
     setFormState(initialState);
   };
+  if(isAuth){
+    return <Navigate to={'/login'} />
+  }
   return (
     <>
       <Navbar />

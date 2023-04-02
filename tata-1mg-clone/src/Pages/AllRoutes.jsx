@@ -34,7 +34,7 @@ function AllRoutes() {
         <Route path="/" element={<Homepage />}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/login" element={<Login/>}/>
-        <Route path="/payment" element={<Payment />}/>
+        <Route path="/payment" element={<Privateroute><Payment /></Privateroute>}/>
         <Route path="/products" element={<Products />}/>
         <Route path="/products/:id" element={<SingleProduct />}/>
         <Route path="*" element={<PageNotfound />}/>
