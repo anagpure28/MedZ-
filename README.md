@@ -42,7 +42,7 @@ Deployed Link of project: "https://medzplus.vercel.app/"
 ![WhatsApp Image 2023-04-03 at 10 59 27](https://user-images.githubusercontent.com/92313981/229420621-0cb2ddd3-021e-40cc-952c-a6497e9fd737.jpg)
                                                     
                                                      Add Product Panel
-![WhatsApp Image 2023-04-03 at 10 59 27](https://user-images.githubusercontent.com/92313981/229420656-87048fe9-9299-4706-96af-ac78d7e92ada.jp
+![WhatsApp Image 2023-04-03 at 10 59 27](https://user-images.githubusercontent.com/92313981/229420656-87048fe9-9299-4706-96af-ac78d7e92ada.jpg)
                                                      
                                                      Edit Product Panel
 ![WhatsApp Image 2023-04-03 at 10 59 28](https://user-images.githubusercontent.com/92313981/229420767-08185f11-b58b-4343-bc05-6c4589467926.jpg)
