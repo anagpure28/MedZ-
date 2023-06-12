@@ -9,6 +9,7 @@ Original Website Link: "https://www.1mg.com/"
 
 Deployed Link of project: "https://medzplus.vercel.app/"
 
+
                                                      FrontEnd
 
                                                      Landing Page
